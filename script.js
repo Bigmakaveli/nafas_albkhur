@@ -602,6 +602,66 @@
             }
         }
 
+        /* ---------- Product Image Marquee (continuous loop from product images) ---------- */
+        function initMarquee() {
+            try {
+                var container = document.getElementById('product-marquee');
+                if (!container) return;
+
+                var track = container.querySelector('.marquee-track');
+                if (!track) return;
+
+                // Collect unique product image sources
+                var productImgs = Array.prototype.slice.call(document.querySelectorAll('#products-section img'));
+                var seen = {};
+                var sources = [];
+                productImgs.forEach(function (img) {
+                    var src = (img.getAttribute('src') || '').trim();
+                    if (src && !seen[src]) {
+                        seen[src] = true;
+                        sources.push({ src: src, alt: img.getAttribute('alt') || '' });
+                    }
+                });
+
+                if (!sources.length) {
+                    var wrap = document.getElementById('marquee-section');
+                    if (wrap) wrap.style.display = 'none';
+                    return;
+                }
+
+                function appendSet(parent) {
+                    sources.forEach(function (o) {
+                        var im = document.createElement('img');
+                        im.src = o.src;
+                        if (o.alt) im.alt = o.alt;
+                        im.loading = 'lazy';
+                        im.decoding = 'async';
+                        parent.appendChild(im);
+                    });
+                }
+
+                // Build two sets for a seamless loop
+                appendSet(track);
+                appendSet(track);
+
+                // Adjust animation duration based on content width (approximate)
+                requestAnimationFrame(function () {
+                    try {
+                        var total = 0;
+                        var children = track.children;
+                        for (var i = 0; i < children.length; i++) {
+                            // Sum width + 16px gap
+                            total += children[i].getBoundingClientRect().width + 16;
+                        }
+                        var distance = Math.max(1, total / 2); // move exactly one set width
+                        var pxPerSec = 100; // scroll speed in px/sec
+                        var duration = Math.max(20, Math.min(60, distance / pxPerSec));
+                        track.style.setProperty('--marquee-duration', duration + 's');
+                    } catch (e) {}
+                });
+            } catch (e) {}
+        }
+
         // Product filters (simple client-side)
         function initProductFilters() {
             const filterBar = document.querySelector('.product-filters');
@@ -664,10 +724,11 @@
             }
         });
         
-        // Initialize mobile menu, product filters, slideshow, and default language (with persistence)
+        // Initialize mobile menu, product filters, slideshow, marquee, and default language (with persistence)
         initMobileMenu();
         initProductFilters();
         initSlideshow();
+        initMarquee();
         let savedLang = 'ar';
         try {
             const stored = localStorage.getItem('site_lang');

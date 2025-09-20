@@ -576,6 +576,48 @@
             .slideshow .slideshow-control { width: 34px; height: 34px; }
         }
 
+        /* Marquee (above Our Story) */
+        .marquee-wrapper {
+            padding-top: 8px;
+            padding-bottom: 8px;
+        }
+        .marquee {
+            width: 100%;
+            overflow: hidden;
+            position: relative;
+            background: transparent;
+        }
+        .marquee-track {
+            display: inline-flex;
+            align-items: center;
+            gap: 16px;                    /* 16px spacing between images */
+            will-change: transform;
+            animation: marquee var(--marquee-duration, 30s) linear infinite;
+        }
+        .marquee:hover .marquee-track {
+            animation-play-state: paused; /* pause on hover */
+        }
+        .marquee-track img {
+            height: 120px;                /* desktop max-height */
+            max-height: 120px;
+            width: auto;                  /* keep aspect ratio */
+            flex: 0 0 auto;               /* prevent shrinking */
+            object-fit: contain;          /* keep full image visible */
+            border-radius: 8px;
+            box-shadow: 0 2px 6px rgba(0,0,0,.06);
+            user-select: none;
+            -webkit-user-drag: none;
+        }
+        @keyframes marquee {
+            from { transform: translateX(0); }
+            to   { transform: translateX(-50%); } /* move exactly one set width (content duplicated) */
+        }
+
+        /* Mobile sizing for marquee images */
+        @media (max-width: 768px) {
+            .marquee-track img { height: 80px; max-height: 80px; }
+        }
+
         /* Story */
         .story p {
             max-width: 900px;
