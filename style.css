@@ -329,6 +329,8 @@
             gap: 18px;
             max-width: 1100px;
             margin: 0 auto 16px;
+            padding-inline: 12px; /* responsive side padding to avoid edge collisions */
+            overflow-x: hidden;    /* prevent any horizontal overflow on small screens */
         }
         .contact form {
             background: var(--card-bg);
@@ -336,6 +338,10 @@
             border-radius: 8px;
             padding: 16px;
             box-shadow: 0 2px 6px rgba(0,0,0,.06);
+            box-sizing: border-box;   /* ensure padding/border are included in width */
+            display: flex;            /* column layout keeps actions inside the form */
+            flex-direction: column;
+            overflow-x: hidden;       /* no horizontal overflow within form */
         }
         .contact form h3 {
             margin: 0 0 10px;
@@ -353,18 +359,35 @@
             color: var(--secondary-accent);
         }
         .contact form input,
-        .contact form textarea {
+        .contact form textarea,
+        .contact form select {
             width: 100%;
+            max-width: 100%;
+            min-width: 0;                /* allow shrinking in tight grids */
             padding: 10px 12px;
             border: 1px solid var(--card-border);
             border-radius: 6px;
             font-size: 15px;
             font-family: inherit;
             background: #fff;
+            box-sizing: border-box;      /* never overflow due to padding/border */
+            text-align: inherit;         /* keep RTL/LTR alignment from page */
         }
         .contact form textarea {
-            min-height: 120px;
+            min-height: 120px;           /* sensible minimum height */
             resize: vertical;
+        }
+        /* Optional footer container if added later */
+        .contact form .form-footer {
+            display: flex;
+            justify-content: flex-end;   /* in RTL, 'end' aligns to the right */
+            gap: 10px;
+            width: 100%;
+        }
+        /* Keep submit button inside and aligned on small screens (RTL-friendly) */
+        .contact form button[type="submit"] {
+            align-self: flex-start;      /* cross-start is the right side in RTL */
+            max-width: 100%;
         }
         .contact .address-block {
             background: var(--card-bg);
