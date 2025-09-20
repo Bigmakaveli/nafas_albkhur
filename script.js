@@ -283,7 +283,7 @@
             toChange.forEach(t => { t.nodeValue = convertText(t.nodeValue); });
         }
 
-        const WHATSAPP_PHONE = 'PHONE_NUMBER';
+        const WHATSAPP_PHONE = '972525359582';
 
         function updateWhatsAppLinks() {
             try {
@@ -912,6 +912,49 @@
             });
         }
 
+        // WhatsApp: open chat with number +972525359582 and pre-filled message
+        function installWhatsAppClickHandler() {
+            var PHONE = '972525359582';
+
+            function findProductName() {
+                // 1) element with id "product-name"
+                var el = document.getElementById('product-name');
+                if (el && el.textContent) return el.textContent.trim();
+                // 2) element with class "product-name"
+                el = document.querySelector('.product-name');
+                if (el && el.textContent) return el.textContent.trim();
+                // 3) element with class "product-title"
+                el = document.querySelector('.product-title');
+                if (el && el.textContent) return el.textContent.trim();
+                // 4) meta property "og:title"
+                var og = document.querySelector('meta[property="og:title"]');
+                if (og && og.getAttribute('content')) return (og.getAttribute('content') || '').trim();
+                // 5) fallback to document.title
+                return (document.title || '').trim();
+            }
+
+            // Event delegation to handle all current/future .whatsapp-btn elements
+            document.addEventListener('click', function (e) {
+                var btn = e.target && e.target.closest ? e.target.closest('.whatsapp-btn') : null;
+                if (!btn) return;
+
+                // Prevent default anchor navigation or form submission
+                try { e.preventDefault(); } catch (_e) {}
+                try { if (e.stopPropagation) e.stopPropagation(); } catch (_e) {}
+
+                var productName = findProductName();
+                var msg = "Hi, I'm interested in " + productName;
+                var url = 'https://wa.me/' + PHONE + '?text=' + encodeURIComponent(msg);
+
+                try {
+                    window.open(url, '_blank', 'noopener');
+                } catch (_e) {
+                    // fallback if popups blocked: navigate in the same tab
+                    window.location.href = url;
+                }
+            });
+        }
+
         // Bind click events to language links (both desktop and mobile)
         ['he','ar','en'].forEach(function(lang) {
             const link = document.getElementById('lang-' + lang);
@@ -949,6 +992,7 @@
         initProductFilters();
         initSlideshow();
         initScrollingRow();
+        installWhatsAppClickHandler();
         let savedLang = 'ar';
         try {
             const stored = localStorage.getItem('site_lang');
