@@ -72,7 +72,8 @@
                 hours_label: 'Hours: 10:00 – 21:00',
                 phone_label: 'Phone: 000-000-0000',
                 email_label: 'Email: info@nafsalbokhor.com',
-                footer_text: 'All rights reserved © 2025'
+                footer_text: 'All rights reserved © 2025',
+                whatsapp_label: 'Get via WhatsApp'
             },
             he: {
                 brand_name: 'נפס אל־בכור',
@@ -146,7 +147,8 @@
                 hours_label: 'שעות: 10:00 – 21:00',
                 phone_label: 'טלפון: 000-000-0000',
                 email_label: 'אימייל: info@nafsalbokhor.com',
-                footer_text: 'כל הזכויות שמורות © 2025'
+                footer_text: 'כל הזכויות שמורות © 2025',
+                whatsapp_label: 'קבל בוואטסאפ'
             },
             ar: {
                 brand_name: 'نفس البخور',
@@ -220,7 +222,8 @@
                 hours_label: 'ساعات العمل: 10:00 – 21:00',
                 phone_label: 'الهاتف: 000-000-0000',
                 email_label: 'البريد الإلكتروني: info@nafsalbokhor.com',
-                footer_text: 'جميع الحقوق محفوظة © 2025'
+                footer_text: 'جميع الحقوق محفوظة © 2025',
+                whatsapp_label: 'احصل عبر الواتساب'
             }
         };
         // Locale helpers: convert Latin digits to Arabic-Indic when Arabic is active
@@ -252,12 +255,17 @@
                     const nameId = btn.getAttribute('data-product-name-id');
                     const nameEl = nameId ? document.getElementById(nameId) : null;
                     const productName = nameEl ? (nameEl.textContent || '').trim() : '';
+                    const lang = document.documentElement.lang || 'ar';
+                    const tr = (translations && translations[lang]) ? translations[lang] : (translations && translations['ar']) ? translations['ar'] : {};
+                    const label = (tr && tr.whatsapp_label) ? tr.whatsapp_label : 'احصل عبر الواتساب';
                     const msg = 'مرحباً، أود الحصول على هذا المنتج: ' + productName;
                     const href = 'https://wa.me/' + WHATSAPP_PHONE + '?text=' + encodeURIComponent(msg);
                     btn.setAttribute('href', href);
-                    if (productName) {
-                        btn.setAttribute('aria-label', 'احصل عبر واتساب - ' + productName);
-                    }
+                    // Update button visible label
+                    var span = btn.querySelector('span');
+                    if (span) { span.textContent = label; }
+                    // Improve accessibility label per language
+                    btn.setAttribute('aria-label', (productName ? (label + ' - ' + productName) : label));
                     btn.setAttribute('target', '_blank');
                     btn.setAttribute('rel', 'noopener');
                 });
