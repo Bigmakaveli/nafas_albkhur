@@ -64,6 +64,8 @@
         }
         .brand-line {
             display: block;
+            /* Force the Arabic font stack for all brand lines */
+            font-family: 'Rihani', 'NotoKufiArabic', 'Noto Sans Arabic', sans-serif;
         }
         /* Show only the active brand line; hide others accessibly */
         .brand-line[aria-hidden="true"] {
@@ -73,15 +75,24 @@
             font-size: 1.15rem;
             color: var(--secondary-accent);
             letter-spacing: .4px;
+            /* Ensure proper LTR rendering for English within RTL pages */
+            direction: ltr;
+            unicode-bidi: isolate;
         }
         .brand-ar {
             font-size: 2rem;
             font-weight: 800;
             color: var(--primary-accent);
+            /* Explicit RTL for Arabic */
+            direction: rtl;
+            unicode-bidi: isolate;
         }
         .brand-he {
             font-size: 1.05rem;
             color: var(--secondary-accent);
+            /* Explicit RTL for Hebrew */
+            direction: rtl;
+            unicode-bidi: isolate;
         }
         nav a {
             margin: 0 15px;
