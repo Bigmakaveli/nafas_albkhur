@@ -75,11 +75,11 @@
                 footer_text: 'All rights reserved © 2025'
             },
             he: {
-                brand_name: 'نفس البخور',
+                brand_name: 'נפס אל־בخور',
                 // Navigation
                 nav_home: 'בית',
                 nav_products: 'מוצרים',
-                nav_about: 'אודותינו',
+                nav_about: 'אודות',
                 nav_story: 'הסיפור שלנו',
                 nav_features: 'מאפיינים',
                 nav_testimonials: 'המלצות',
@@ -89,7 +89,7 @@
                 hero_description: 'בשמים אמירתיים יוקרתיים, נרקחו ברוח ערבית',
                 hero_cta: 'גלו את הקולקציה',
                 // About
-                about_title: 'אודותינו',
+                about_title: 'אודות',
                 about_text: 'Nafs AlBukhoor מציעה בשמים אמירתיים מעודנים עם נשמה ערבית. אנו מחויבים לאיכות, לשירות ולחוויית קנייה יפה.',
                 // Story
                 story_title: 'הסיפור שלנו',
