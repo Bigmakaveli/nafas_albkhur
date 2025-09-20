@@ -800,3 +800,61 @@
                 transform: translateZ(0);
             }
         }
+
+        /* Desktop-only header redesign (min-width: 1024px) */
+        @media (min-width: 1024px) {
+            /* Increase header height and keep elements vertically centered */
+            header {
+                height: 120px;
+                padding: 0 40px;           /* keep horizontal breathing room */
+                display: flex;
+                align-items: center;        /* vertical centering */
+                justify-content: flex-start;/* allow spacer + right-aligned actions */
+                gap: 0;                     /* spacing handled by spacer and child gaps */
+            }
+
+            /* Spacer to ensure buttons never overlap the centered title;
+               reserves centerline + 20px safe gap on the left side */
+            header::before {
+                content: '';
+                flex: 0 0 calc(50% + 20px);
+            }
+
+            /* Center brand both horizontally and vertically; larger title size */
+            header .brand {
+                top: 50%;
+                transform: translate(-50%, -50%);
+            }
+            header .brand .brand-latin,
+            header .brand .brand-ar,
+            header .brand .brand-he {
+                font-size: 32px;            /* site title size */
+            }
+
+            /* Right-aligned actions container composed of nav + extra-controls */
+            header nav {
+                margin-left: auto;          /* push actions to the right */
+                display: flex;
+                align-items: center;
+                gap: 10px;                  /* 10px spacing between nav buttons */
+            }
+            header nav a {
+                margin: 0;                  /* use gap for spacing */
+                font-size: 15px;            /* button font-size */
+            }
+
+            header .extra-controls {
+                display: flex;
+                align-items: center;
+                gap: 10px;                  /* 10px spacing between controls */
+                margin-left: 20px;          /* at least 20px gap from nav (title safe area) */
+                flex-wrap: nowrap;
+            }
+            /* Ensure buttons/links in the controls follow the 15px size rule */
+            header .extra-controls .lang-switcher a,
+            header .extra-controls .language-button,
+            header .extra-controls .language-selector button,
+            header .social-links a {
+                font-size: 15px;
+            }
+        }
