@@ -449,9 +449,9 @@
                 flex-wrap: nowrap;
             }
 
-            header .brand .brand-latin { font-size: 1rem; }
+            header .brand .brand-latin { font-size: 1.6rem; }
             header .brand .brand-ar { font-size: 1.6rem; }
-            header .brand .brand-he { font-size: 0.95rem; }
+            header .brand .brand-he { font-size: 1.6rem; }
 
             .mobile-menu-toggle {
                 display: block;
@@ -546,9 +546,9 @@
                 max-height: 96px; /* tighter cap on small phones */
             }
 
-            header .brand .brand-latin { font-size: 0.95rem; }
+            header .brand .brand-latin { font-size: 1.4rem; }
             header .brand .brand-ar { font-size: 1.4rem; }
-            header .brand .brand-he { font-size: 0.9rem; }
+            header .brand .brand-he { font-size: 1.4rem; }
 
             .hero {
                 padding: 60px 15px;
@@ -628,9 +628,9 @@
 
         /* Small Mobile Styles (360px and below) */
         @media (max-width: 360px) {
-            header .brand .brand-latin { font-size: 0.9rem; }
+            header .brand .brand-latin { font-size: 1.3rem; }
             header .brand .brand-ar { font-size: 1.3rem; }
-            header .brand .brand-he { font-size: 0.85rem; }
+            header .brand .brand-he { font-size: 1.3rem; }
 
             .hero h1 {
                 font-size: 1.8rem;
