@@ -598,8 +598,8 @@
             animation-play-state: paused; /* pause on hover */
         }
         .marquee-track img {
-            height: 120px;                /* desktop max-height */
-            max-height: 120px;
+            height: 200px;                /* desktop max-height */
+            max-height: 200px;
             width: auto;                  /* keep aspect ratio */
             flex: 0 0 auto;               /* prevent shrinking */
             object-fit: contain;          /* keep full image visible */
@@ -611,6 +611,11 @@
         @keyframes marquee {
             from { transform: translateX(0); }
             to   { transform: translateX(-50%); } /* move exactly one set width (content duplicated) */
+        }
+
+        /* Tablet sizing for marquee images */
+        @media (max-width: 1024px) {
+            .marquee-track img { height: 120px; max-height: 120px; }
         }
 
         /* Mobile sizing for marquee images */
