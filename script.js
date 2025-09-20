@@ -662,6 +662,40 @@
             } catch (e) {}
         }
 
+        /* ---------- Scrolling Row (append unique product images) ---------- */
+        function initScrollingRow() {
+            try {
+                var row = document.querySelector('.scrolling-row');
+                if (!row) return;
+
+                // Collect unique product image sources
+                var productImgs = Array.prototype.slice.call(document.querySelectorAll('#products-section img'));
+                var seen = {};
+                var sources = [];
+                productImgs.forEach(function (img) {
+                    var src = (img.getAttribute('src') || '').trim();
+                    if (src && !seen[src]) {
+                        seen[src] = true;
+                        sources.push({ src: src, alt: img.getAttribute('alt') || '' });
+                    }
+                });
+
+                if (!sources.length) {
+                    row.style.display = 'none';
+                    return;
+                }
+
+                sources.forEach(function (o) {
+                    var im = document.createElement('img');
+                    im.src = o.src;
+                    if (o.alt) im.alt = o.alt;
+                    im.loading = 'lazy';
+                    im.decoding = 'async';
+                    row.appendChild(im);
+                });
+            } catch (e) {}
+        }
+
         // Product filters (simple client-side)
         function initProductFilters() {
             const filterBar = document.querySelector('.product-filters');
@@ -724,11 +758,12 @@
             }
         });
         
-        // Initialize mobile menu, product filters, slideshow, marquee, and default language (with persistence)
+        // Initialize mobile menu, product filters, slideshow, marquee, scrolling-row, and default language (with persistence)
         initMobileMenu();
         initProductFilters();
         initSlideshow();
         initMarquee();
+        initScrollingRow();
         let savedLang = 'ar';
         try {
             const stored = localStorage.getItem('site_lang');

@@ -623,6 +623,30 @@
             .marquee-track img { height: 80px; max-height: 80px; }
         }
 
+        /* Scrolling Row (horizontal, large product images) */
+        .scrolling-row {
+            display: flex;
+            align-items: center;
+            overflow-x: auto;            /* horizontal scroll */
+            overflow-y: hidden;
+            gap: 16px;                    /* spacing between images */
+            padding: 8px 0;
+            scroll-snap-type: x mandatory; /* smooth snap scrolling on touch devices */
+            -webkit-overflow-scrolling: touch;
+        }
+        .scrolling-row img {
+            height: 300px;               /* larger images as requested */
+            width: auto;                 /* keep aspect ratio */
+            object-fit: cover;           /* fill frame nicely */
+            flex: 0 0 auto;              /* prevent shrinking */
+            border-radius: 8px;
+            box-shadow: 0 2px 6px rgba(0,0,0,.06);
+            margin-right: 16px;          /* 16px spacing between images */
+            user-select: none;
+            -webkit-user-drag: none;
+        }
+        .scrolling-row img:last-child { margin-right: 0; }
+
         /* Story */
         .story p {
             max-width: 900px;
