@@ -262,12 +262,12 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            height: 36px;
-            padding: 6px 10px;
+            height: 30px;
+            padding: 4px 8px;
             border: 1px solid var(--card-border);
             border-radius: 6px;
             background: #ffffff;
-            font-size: 14px;
+            font-size: 12px;
         }
 
         .lang-switcher a.active {
@@ -287,22 +287,37 @@
             fill: var(--primary-accent);
         }
 
-        /* Language bar beneath the header (visible on all screens, centered) */
+        /* Fixed language switcher on the left side of the screen (visible on all screens) */
         .mobile-lang-bar {
+            position: fixed;
+            top: 50%;
+            left: 12px;
+            transform: translateY(-50%);
             display: flex;
             justify-content: center;
-            align-items: center;
-            gap: 12px;
-            padding: 8px 12px;
+            align-items: stretch;
+            padding: 10px 8px;
             background-color: var(--nav-bg);
-            border-bottom: 1px solid var(--card-border);
+            border: 1px solid var(--card-border);
+            border-radius: 10px;
+            box-shadow: 0 6px 18px rgba(0,0,0,.08);
+            z-index: 1500;
         }
         .mobile-lang-bar .lang-switcher {
             display: flex;
-            gap: 12px;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .mobile-lang-bar .lang-switcher a {
+            height: 30px;
+            padding: 4px 8px;
+            font-size: 12px;
         }
         .mobile-lang-bar .lang-switcher a.active {
             font-weight: 700;
+            background: var(--button-bg);
+            border-color: var(--button-bg);
+            color: var(--button-text);
         }
 
         /* Buttons & Utilities */
@@ -490,29 +505,36 @@
 
             /* Show standalone language bar below header on mobile */
             .mobile-lang-bar {
+                position: fixed;
+                top: 50%;
+                left: 12px;
+                transform: translateY(-50%);
                 display: flex;
                 justify-content: center;
-                align-items: center;
-                gap: 12px;
-                padding: 8px 12px;
+                align-items: stretch;
+                padding: 10px 8px;
                 background-color: var(--nav-bg);
-                border-bottom: 1px solid var(--card-border);
+                border: 1px solid var(--card-border);
+                border-radius: 10px;
+                box-shadow: 0 6px 18px rgba(0,0,0,.08);
+                z-index: 1500;
             }
             .mobile-lang-bar .lang-switcher {
                 display: flex;
-                gap: 12px;
+                flex-direction: column;
+                gap: 8px;
             }
             .mobile-lang-bar .lang-switcher a {
                 display: inline-flex;
                 align-items: center;
                 justify-content: center;
-                height: 36px;
-                padding: 6px 10px;
+                height: 30px;
+                padding: 4px 8px;
                 border: 1px solid var(--card-border);
                 border-radius: 6px;
                 color: var(--primary-accent);
                 text-decoration: none;
-                font-size: 14px;
+                font-size: 12px;
                 background: #ffffff;
             }
             .mobile-lang-bar .lang-switcher a.active {
