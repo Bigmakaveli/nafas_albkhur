@@ -233,8 +233,7 @@
                 if (el && typeof val === 'string') el.textContent = val;
             }
 
-            // Brand
-            setText('brand-name', tr.brand_name);
+            // Brand (static three-line branding; no dynamic replacement)
 
             // Navigation (desktop)
             setText('nav-home', tr.nav_home);

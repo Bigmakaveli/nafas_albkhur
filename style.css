@@ -52,9 +52,30 @@
             z-index: 1100; /* keep header and toggle above overlay */
         }
         header .brand {
-            font-size: 2.5rem;
-            font-weight: bold;
+            flex: 1;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2px;
+            line-height: 1.15;
+        }
+        .brand-line {
+            display: block;
+        }
+        .brand-latin {
+            font-size: 1.15rem;
+            color: var(--secondary-accent);
+            letter-spacing: .4px;
+        }
+        .brand-ar {
+            font-size: 2rem;
+            font-weight: 800;
             color: var(--primary-accent);
+        }
+        .brand-he {
+            font-size: 1.05rem;
+            color: var(--secondary-accent);
         }
         nav a {
             margin: 0 15px;
@@ -373,9 +394,9 @@
                 flex-wrap: wrap;
             }
 
-            header .brand {
-                font-size: 2rem;
-            }
+            header .brand .brand-latin { font-size: 1rem; }
+            header .brand .brand-ar { font-size: 1.6rem; }
+            header .brand .brand-he { font-size: 0.95rem; }
 
             .mobile-menu-toggle {
                 display: block;
@@ -386,6 +407,16 @@
             }
 
             .extra-controls {
+                display: flex;
+                width: 100%;
+                justify-content: center;
+                gap: 12px;
+                margin-top: 8px;
+                order: 3;
+                flex-wrap: wrap;
+            }
+            /* Hide only header social icons on mobile; keep them inside the mobile panel */
+            header .social-links {
                 display: none;
             }
 
@@ -429,9 +460,9 @@
                 padding: 10px 15px;
             }
 
-            header .brand {
-                font-size: 1.8rem;
-            }
+            header .brand .brand-latin { font-size: 0.95rem; }
+            header .brand .brand-ar { font-size: 1.4rem; }
+            header .brand .brand-he { font-size: 0.9rem; }
 
             .hero {
                 padding: 60px 15px;
@@ -511,9 +542,9 @@
 
         /* Small Mobile Styles (360px and below) */
         @media (max-width: 360px) {
-            header .brand {
-                font-size: 1.5rem;
-            }
+            header .brand .brand-latin { font-size: 0.9rem; }
+            header .brand .brand-ar { font-size: 1.3rem; }
+            header .brand .brand-he { font-size: 0.85rem; }
 
             .hero h1 {
                 font-size: 1.8rem;
