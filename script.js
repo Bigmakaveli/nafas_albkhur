@@ -240,6 +240,7 @@
         function initMobileMenu() {
             const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
             const mobileMenu = document.getElementById('mobile-menu');
+            const header = document.querySelector('header');
 
             if (!mobileMenuToggle || !mobileMenu) return;
 
@@ -251,7 +252,14 @@
             const OPEN_ICON = '✕';
             const CLOSED_ICON = '☰';
 
+            function setPanelTop() {
+                const headerHeight = header ? header.offsetHeight : 0;
+                // Position panel directly below the header so the toggle remains visible
+                mobileMenu.style.top = headerHeight + 'px';
+            }
+
             function openMenu() {
+                setPanelTop();
                 mobileMenu.classList.add('active');
                 mobileMenuToggle.innerHTML = OPEN_ICON;
                 mobileMenuToggle.setAttribute('aria-expanded', 'true');
@@ -291,6 +299,13 @@
                 }
             });
 
+            // Adjust panel position on resize while open
+            window.addEventListener('resize', function () {
+                if (mobileMenu.classList.contains('active')) {
+                    setPanelTop();
+                }
+            });
+
             // Close when clicking a link
             const mobileNavLinks = mobileMenu.querySelectorAll('nav a');
             mobileNavLinks.forEach(function (link) {
@@ -299,9 +314,16 @@
                 });
             });
 
-            // Close when clicking outside
+            // Close when clicking outside (anywhere not in the panel or the toggle)
             document.addEventListener('click', function (event) {
                 if (!mobileMenu.contains(event.target) && !mobileMenuToggle.contains(event.target)) {
+                    closeMenu();
+                }
+            });
+
+            // Also close when clicking on the overlay background itself
+            mobileMenu.addEventListener('click', function (event) {
+                if (event.target === mobileMenu) {
                     closeMenu();
                 }
             });
