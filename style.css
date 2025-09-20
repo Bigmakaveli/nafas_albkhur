@@ -890,6 +890,9 @@
                 order: 2;
                 margin-left: auto; /* push nav to the right */
             }
+            /* Show header language switcher on desktop and hide mobile language bar */
+            header .extra-controls .lang-switcher { display: inline-flex; }
+            .mobile-lang-bar { display: none; }
             header nav a {
                 margin: 0;
                 font-size: 16px;
@@ -934,18 +937,14 @@
                     0 0 0 3px rgba(46, 125, 246, 0.18);
             }
 
-            /* Hero: full-width, centered content with dark overlay background */
+            /* Hero: simplified on desktop; use page background and default colors */
             .hero {
                 position: relative;
                 padding: 160px 40px;
                 text-align: center;
                 display: block;
-                color: #ffffff;
-                background-image:
-                    linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)),
-                    url('https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=1920&auto=format&fit=crop');
-                background-size: cover;
-                background-position: center;
+                color: inherit;
+                background: none;
                 border-radius: 0;
             }
             .hero > * {
@@ -957,19 +956,19 @@
             }
             .hero .hero-brand-title {
                 display: block;
-                color: #ffffff;
+                color: var(--primary-accent);
                 font-size: 5rem;
                 letter-spacing: .6px;
             }
             .hero h1#hero-title {
                 font-size: 3.6rem;
-                color: #ffffff;
+                color: var(--primary-accent);
                 margin-top: 4px;
             }
             .hero p {
                 font-size: 1.3rem;
                 max-width: 840px;
-                color: rgba(255,255,255,.92);
+                color: var(--secondary-accent);
                 margin-top: 12px;
             }
             .hero .cta-group {
