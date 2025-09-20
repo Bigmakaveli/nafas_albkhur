@@ -287,7 +287,7 @@
             fill: var(--primary-accent);
         }
 
-        /* Language bar directly beneath header (left-aligned, non-sticky) */
+        /* Language bar directly beneath header (right-aligned, non-sticky, minimal buttons) */
         .mobile-lang-bar {
             position: static;
             top: auto;
@@ -304,20 +304,26 @@
         .mobile-lang-bar .lang-switcher {
             display: flex;
             flex-direction: row;
-            justify-content: flex-start;
+            justify-content: flex-end; /* align to the right */
             align-items: center;
             gap: 8px;
         }
         .mobile-lang-bar .lang-switcher a {
-            height: auto;
-            padding: 4px 8px; /* smaller buttons */
-            font-size: 12px;  /* reduced font size */
+            height: auto;                /* wrap content */
+            padding: 2px 6px;            /* smaller padding */
+            font-size: 11px;             /* reduced font size */
+            background: transparent;     /* no background */
+            border: none;                /* no border */
+            border-radius: 0;
+            color: var(--primary-accent);
+            text-decoration: none;
         }
         .mobile-lang-bar .lang-switcher a.active {
             font-weight: 700;
-            background: var(--button-bg);
-            border-color: var(--button-bg);
-            color: var(--button-text);
+            text-decoration: underline;  /* subtle emphasis without background */
+            background: transparent;
+            border: none;
+            color: var(--primary-accent);
         }
 
         /* Buttons & Utilities */
@@ -503,7 +509,7 @@
                 display: none;
             }
 
-            /* Language bar directly beneath header (left-aligned, non-sticky) */
+            /* Language bar directly beneath header (right-aligned, non-sticky, minimal buttons) */
             .mobile-lang-bar {
                 position: static;
                 top: auto;
@@ -520,7 +526,7 @@
             .mobile-lang-bar .lang-switcher {
                 display: flex;
                 flex-direction: row;
-                justify-content: flex-start;
+                justify-content: flex-end; /* align to the right */
                 align-items: center;
                 gap: 8px;
             }
@@ -528,19 +534,21 @@
                 display: inline-flex;
                 align-items: center;
                 justify-content: center;
-                height: auto;
-                padding: 4px 8px; /* smaller buttons */
-                border: 1px solid var(--card-border);
-                border-radius: 6px;
+                height: auto;               /* wrap content */
+                padding: 2px 6px;           /* smaller padding */
+                border: none;               /* no border */
+                border-radius: 0;
                 color: var(--primary-accent);
                 text-decoration: none;
-                font-size: 12px;  /* reduced font size */
-                background: #ffffff;
+                font-size: 11px;            /* reduced font size */
+                background: transparent;    /* no background */
             }
             .mobile-lang-bar .lang-switcher a.active {
-                background: var(--button-bg);
-                border-color: var(--button-bg);
-                color: var(--button-text);
+                background: transparent;
+                border: none;
+                color: var(--primary-accent);
+                font-weight: 700;
+                text-decoration: underline;
             }
 
             /* Hide only header social icons on mobile; keep them inside the mobile panel */
