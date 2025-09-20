@@ -259,24 +259,36 @@
             color: var(--button-hover-text);
         }
         /* Subtle "More details" link */
-        .product-card .info .more-link {
+        .product-card .info .whatsapp-btn {
             align-self: flex-start;
-            color: var(--secondary-accent);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background-color: var(--button-bg);
+            color: var(--button-text);
+            border: 1px solid var(--button-bg);
             text-decoration: none;
             font-size: .95rem;
-            padding: 2px 0;
-            border-bottom: 1px dotted var(--secondary-accent);
-            transition: color .2s ease, border-color .2s ease;
+            padding: 8px 12px;
+            border-radius: 999px;
+            transition: background-color .2s ease, color .2s ease, transform .1s ease, box-shadow .2s ease;
+            direction: rtl; /* visually natural in RTL contexts */
         }
-        .product-card .info .more-link:hover {
-            color: var(--primary-accent);
-            border-color: var(--primary-accent);
+        .product-card .info .whatsapp-btn svg {
+            width: 18px;
+            height: 18px;
+            fill: currentColor;
+            flex: 0 0 auto;
         }
-        .product-card .info .more-link:focus,
-        .product-card .info .more-link:focus-visible {
+        .product-card .info .whatsapp-btn:hover {
+            background-color: var(--button-hover-bg);
+            color: var(--button-hover-text);
+            transform: translateY(-1px);
+        }
+        .product-card .info .whatsapp-btn:focus,
+        .product-card .info .whatsapp-btn:focus-visible {
             outline: none;
             box-shadow: 0 0 0 3px rgba(166,124,82,0.28);
-            border-radius: 4px;
         }
         .about {
             background-image: linear-gradient(rgba(245,240,235,0.6), rgba(245,240,235,0.6));

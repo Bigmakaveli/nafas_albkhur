@@ -244,6 +244,26 @@
             toChange.forEach(t => { t.nodeValue = convertText(t.nodeValue); });
         }
 
+        const WHATSAPP_PHONE = 'PHONE_NUMBER';
+
+        function updateWhatsAppLinks() {
+            try {
+                document.querySelectorAll('.product-card .whatsapp-btn').forEach(function(btn) {
+                    const nameId = btn.getAttribute('data-product-name-id');
+                    const nameEl = nameId ? document.getElementById(nameId) : null;
+                    const productName = nameEl ? (nameEl.textContent || '').trim() : '';
+                    const msg = 'مرحباً، أود الحصول على هذا المنتج: ' + productName;
+                    const href = 'https://wa.me/' + WHATSAPP_PHONE + '?text=' + encodeURIComponent(msg);
+                    btn.setAttribute('href', href);
+                    if (productName) {
+                        btn.setAttribute('aria-label', 'احصل عبر واتساب - ' + productName);
+                    }
+                    btn.setAttribute('target', '_blank');
+                    btn.setAttribute('rel', 'noopener');
+                });
+            } catch (e) {}
+        }
+
         function setLanguage(lang) {
             const tr = translations[lang];
             if (!tr) return;
@@ -367,6 +387,9 @@
                 var spanLang = span.getAttribute('data-lang');
                 span.setAttribute('aria-hidden', (spanLang === lang) ? 'false' : 'true');
             });
+
+            // Update WhatsApp links with current (possibly translated) product names
+            updateWhatsAppLinks();
 
             // Locale-specific numeral shaping for Arabic
             if (lang === 'ar') {
