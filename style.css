@@ -830,87 +830,70 @@
             .hero .hero-brand-title { display: block; }
         }
 
-        /* Desktop-only header redesign (min-width: 1024px) */
-        @media (min-width: 1024px) {
-            /* Increase header height and keep elements vertically centered */
+        /* Desktop design upgrades (min-width: 992px) */
+        @media (min-width: 992px) {
+            /* Header: logo left, controls + nav right with generous spacing */
             header {
-                position: relative;
-                height: 80px;
-                padding: 0 20px;           /* compact horizontal padding */
-                display: block;            /* we’ll absolutely position children */
+                position: sticky;
+                top: 0;
+                height: 96px;
+                padding: 0 40px;
+                display: flex;
+                align-items: center;
+                gap: 20px;
+                z-index: 1100;
             }
-
-            
-
-            /* Center brand both horizontally and vertically; larger title size */
+            /* Show header brand on desktop even if hidden for ≥768px */
             header .brand {
-                position: absolute;
-                left: 0;
-                right: 0;
-                top: 50%;
-                transform: translateY(-50%);
-                text-align: center;
-                max-width: calc(100% - 240px); /* keep at least 120px each side for buttons/links */
-                margin: 0 auto;
+                display: block !important;
+                position: static;
+                transform: none;
+                text-align: left;
+                max-width: 40%;
+                margin: 0;
                 white-space: nowrap;
                 overflow: hidden;
                 text-overflow: ellipsis;
+                pointer-events: auto;
             }
             header .brand .brand-latin,
             header .brand .brand-ar,
             header .brand .brand-he {
-                font-size: 32px;            /* site title size */
+                font-size: 36px;
             }
-
-            /* Right-aligned main nav */
-            header nav {
-                position: absolute;
-                right: 20px;
-                top: 50%;
-                transform: translateY(-50%);
-                display: flex;
-                align-items: center;
-                gap: 10px;                  /* consistent spacing between nav items */
-            }
-            header nav a {
-                margin: 0;                  /* use gap for spacing */
-                font-size: 15px;            /* button font-size */
-            }
-
-            /* Header buttons container (language + socials) on the left */
+            /* Controls and nav aligned to the right */
             header .extra-controls {
-                position: absolute;
-                left: 20px;                 /* if you prefer on the right, switch to right: 20px */
-                top: 50%;
-                transform: translateY(-50%);
+                margin-left: auto;          /* push to the right */
+                position: static;
+                transform: none;
                 display: flex;
                 align-items: center;
-                gap: 10px;                  /* consistent spacing between controls */
-                flex-wrap: nowrap;
-                font-size: 15px;            /* ensure button text size */
-            }
-            /* Ensure buttons/links in the controls follow the 15px size rule */
-            header .extra-controls .lang-switcher a,
-            header .extra-controls .language-button,
-            header .extra-controls .language-selector button,
-            header .social-links a {
+                gap: 16px;
                 font-size: 15px;
             }
-
+            header nav {
+                display: flex;
+                align-items: center;
+                gap: 24px;                  /* increased spacing */
+            }
+            header nav a {
+                margin: 0;
+                font-size: 16px;
+            }
             /* Desktop navigation/button restyle */
             .nav a,
             .menu-button,
             nav a {
                 border: 1px solid rgba(0, 0, 0, 0.08);
-                border-radius: 8px;
-                padding: 10px 18px;
+                border-radius: 10px;
+                padding: 12px 20px;
                 font-weight: 600;
                 color: #0b2240;
                 background: transparent;
                 text-decoration: none;
                 box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
                 transition: background-color 180ms ease, box-shadow 180ms ease, transform 180ms ease;
-                line-height: 1; /* keeps height tidy with padding */
+                line-height: 1;
             }
             .nav a:hover,
             .menu-button:hover,
@@ -934,5 +917,163 @@
                 box-shadow:
                     0 1px 3px rgba(0, 0, 0, 0.06),
                     0 0 0 3px rgba(46, 125, 246, 0.18);
+            }
+
+            /* Hero: two-column layout (text left, visual right) */
+            .hero {
+                padding: 120px 40px;
+                display: grid;
+                grid-template-columns: minmax(420px, 1.2fr) 1fr;
+                align-items: center;
+                gap: 48px;
+                text-align: left;
+            }
+            .hero > * {
+                grid-column: 1;
+                text-align: left;
+            }
+            .hero::before {
+                content: '';
+                grid-column: 2;
+                align-self: stretch;
+                justify-self: stretch;
+                border-radius: 18px;
+                min-height: 420px;
+                /* Elegant abstract visual (replace URL with a real image if desired) */
+                background:
+                    radial-gradient(1200px 600px at 100% 0%, rgba(166,124,82,.18), rgba(166,124,82,.02) 60%, transparent 70%),
+                    linear-gradient(135deg, rgba(255,250,245,.8), rgba(245,240,235,.9)),
+                    radial-gradient(220px 220px at 70% 30%, rgba(166,124,82,.25), transparent 55%),
+                    radial-gradient(260px 260px at 40% 70%, rgba(109,76,65,.15), transparent 60%);
+                box-shadow: 0 10px 36px rgba(0,0,0,.08);
+            }
+            .hero .hero-brand-title { font-size: 4.8rem; }
+            .hero h1#hero-title { font-size: 3.2rem; }
+            .hero p { font-size: 1.25rem; max-width: 720px; }
+
+            /* Features: 3-column, equal-height cards, centered content */
+            .features .features-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 28px;
+                max-width: 1200px;
+            }
+            .features .feature-item {
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-start;
+                align-items: center;
+                text-align: center;
+                height: 100%;
+                padding: 22px 20px;
+            }
+            .features .feature-item h3 { font-size: 1.2rem; }
+            .features .feature-item p { font-size: 1rem; }
+
+            /* Gallery (if present): large uniform grid */
+            .gallery-grid {
+                display: grid;
+                grid-template-columns: repeat(4, minmax(220px, 1fr));
+                gap: 24px;
+                max-width: 1200px;
+                margin: 0 auto;
+            }
+            .gallery-grid img,
+            .gallery-grid .item {
+                width: 100%;
+                aspect-ratio: 4 / 3;
+                object-fit: cover;
+                border-radius: 10px;
+                box-shadow: 0 2px 8px rgba(0,0,0,.06);
+            }
+
+            /* Pricing (if present): aligned equal-height cards */
+            .pricing .cards {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 28px;
+                max-width: 1200px;
+                margin: 0 auto;
+            }
+            .pricing .card {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                height: 100%;
+                background: var(--card-bg);
+                border: 1px solid var(--card-border);
+                border-radius: 10px;
+                box-shadow: 0 2px 8px rgba(0,0,0,.06);
+                padding: 20px;
+                text-align: center;
+            }
+            .pricing .card .btn {
+                margin-top: 16px;
+                align-self: center;
+                min-width: 160px;
+            }
+
+            /* Testimonials: 3-column with aligned quotes and avatars */
+            .testimonials .quotes {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 22px;
+                max-width: 1200px;
+            }
+            .testimonials blockquote {
+                display: flex;
+                align-items: flex-start;
+                gap: 14px;
+                padding: 18px 20px;
+                border-left-width: 0;
+                border-radius: 10px;
+                position: relative;
+            }
+            .testimonials blockquote::before {
+                content: '';
+                flex: 0 0 44px;
+                width: 44px;
+                height: 44px;
+                border-radius: 50%;
+                background:
+                    radial-gradient(circle at 30% 30%, rgba(166,124,82,.35), rgba(166,124,82,.1) 60%, transparent 70%),
+                    #fff;
+                border: 1px solid var(--card-border);
+                box-shadow: 0 2px 6px rgba(0,0,0,.06);
+            }
+
+            /* Contact: split form/map (if present) */
+            .contact .contact-wrapper {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 28px;
+                max-width: 1200px;
+                margin: 0 auto;
+                align-items: start;
+            }
+            .contact form .row {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 14px;
+            }
+            .contact form input,
+            .contact form textarea,
+            .contact form select {
+                width: 100%;
+                padding: 12px 14px;
+                border: 1px solid var(--card-border);
+                border-radius: 6px;
+                font-size: 15px;
+            }
+            .contact form .btn {
+                min-width: 180px;
+            }
+
+            /* Footer: multi-column layout (if present) */
+            .footer .columns {
+                max-width: 1200px;
+                margin: 0 auto;
+                display: grid;
+                grid-template-columns: repeat(4, minmax(180px, 1fr));
+                gap: 24px;
+                text-align: start;
             }
         }
