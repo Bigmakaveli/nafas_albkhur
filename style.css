@@ -832,39 +832,40 @@
 
         /* Desktop design upgrades (min-width: 1024px) */
         @media (min-width: 1024px) {
-            /* Reserve space for fixed header */
-            body { padding-top: 64px; }
-            /* Header: compact, fixed; logo right in RTL */
+            /* Desktop: hero-first layout, header is sticky; no body offset needed */
+            body { padding-top: 0; }
+            /* Header (desktop): sticky top nav; left-aligned logo, right-aligned nav */
             header {
-                position: fixed;
+                position: sticky;
                 top: 0;
                 left: 0;
                 right: 0;
-                height: 64px;
-                padding: 12px 40px;
+                height: 72px;
+                padding: 16px 40px;
                 display: flex;
                 align-items: center;
                 justify-content: flex-start;
                 gap: 16px;
                 z-index: 1100;
                 border-bottom: none;
-                box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+                box-shadow: 0 6px 18px rgba(0,0,0,0.08);
                 background-color: var(--nav-bg);
+                direction: ltr; /* ensure physical left/right alignment irrespective of page dir */
             }
-            /* Show header brand on desktop even if hidden for ≥768px */
+            /* Show header brand on desktop */
             header .brand {
                 display: block !important;
                 position: static;
                 transform: none;
-                text-align: right;
+                text-align: left;
                 max-width: 40%;
                 max-height: 48px;
-                margin: 0 24px 0 0; /* 24px right margin in RTL */
+                margin: 0 24px 0 0; /* spacing to nav */
                 white-space: nowrap;
                 overflow: hidden;
                 text-overflow: ellipsis;
                 pointer-events: auto;
-                order: 1; /* place logo at the far right in RTL */
+                order: 1; /* logo at the physical left */
             }
             header .brand .brand-latin,
             header .brand .brand-ar,
@@ -887,6 +888,7 @@
                 align-items: center;
                 gap: 16px;
                 order: 2;
+                margin-left: auto; /* push nav to the right */
             }
             header nav a {
                 margin: 0;
@@ -932,37 +934,68 @@
                     0 0 0 3px rgba(46, 125, 246, 0.18);
             }
 
-            /* Hero: two-column layout (text left, visual right) */
+            /* Hero: full-width, centered content with dark overlay background */
             .hero {
-                padding: 120px 40px;
-                display: grid;
-                grid-template-columns: minmax(420px, 1.2fr) 1fr;
-                align-items: center;
-                gap: 48px;
-                text-align: left;
+                position: relative;
+                padding: 160px 40px;
+                text-align: center;
+                display: block;
+                color: #ffffff;
+                background-image:
+                    linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)),
+                    url('https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=1920&auto=format&fit=crop');
+                background-size: cover;
+                background-position: center;
+                border-radius: 0;
             }
             .hero > * {
-                grid-column: 1;
-                text-align: left;
+                position: relative;
+                z-index: 1;
+                text-align: center;
+                margin-left: auto;
+                margin-right: auto;
             }
-            .hero::before {
-                content: '';
-                grid-column: 2;
-                align-self: stretch;
-                justify-self: stretch;
-                border-radius: 18px;
-                min-height: 420px;
-                /* Elegant abstract visual (replace URL with a real image if desired) */
-                background:
-                    radial-gradient(1200px 600px at 100% 0%, rgba(166,124,82,.18), rgba(166,124,82,.02) 60%, transparent 70%),
-                    linear-gradient(135deg, rgba(255,250,245,.8), rgba(245,240,235,.9)),
-                    radial-gradient(220px 220px at 70% 30%, rgba(166,124,82,.25), transparent 55%),
-                    radial-gradient(260px 260px at 40% 70%, rgba(109,76,65,.15), transparent 60%);
-                box-shadow: 0 10px 36px rgba(0,0,0,.08);
+            .hero .hero-brand-title {
+                display: block;
+                color: #ffffff;
+                font-size: 5rem;
+                letter-spacing: .6px;
             }
-            .hero .hero-brand-title { font-size: 4.8rem; }
-            .hero h1#hero-title { font-size: 3.2rem; }
-            .hero p { font-size: 1.25rem; max-width: 720px; }
+            .hero h1#hero-title {
+                font-size: 3.6rem;
+                color: #ffffff;
+                margin-top: 4px;
+            }
+            .hero p {
+                font-size: 1.3rem;
+                max-width: 840px;
+                color: rgba(255,255,255,.92);
+                margin-top: 12px;
+            }
+            .hero .cta-group {
+                margin-top: 26px;
+                display: inline-flex;
+                gap: 16px;
+                align-items: center;
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+            .hero .btn.btn-primary {
+                padding: 14px 22px;
+                font-size: 1.05rem;
+                border-radius: 10px;
+                box-shadow: 0 6px 18px rgba(0,0,0,.18);
+            }
+            .hero .link-secondary {
+                color: #ffffff;
+                opacity: .95;
+                font-weight: 700;
+                text-decoration: underline;
+                transition: opacity .2s ease;
+            }
+            .hero .link-secondary:hover {
+                opacity: 1;
+            }
 
             /* Features: 3-column, equal-height cards, centered content */
             .features .features-grid {
