@@ -654,33 +654,53 @@
                 // Adjust animation/ticker based on content width (one set distance) and enable controls
                 requestAnimationFrame(function () {
                     try {
-                        // Ensure the width of one set covers at least the container to avoid visible gaps on small sets
-                        var ensureIterations = 0;
-                        var total = 0;
-                        var children, distance, containerWidth;
-                        do {
-                            total = 0;
-                            children = track.children;
-                            for (var i = 0; i < children.length; i++) {
-                                // Sum intrinsic width + 16px spacing (matches CSS margin-right)
-                                total += children[i].getBoundingClientRect().width + 16;
-                            }
-                            distance = Math.max(1, total / 2); // width of one set
-                            containerWidth = row.getBoundingClientRect().width || row.clientWidth || 0;
-                            if (distance < containerWidth && ensureIterations < 6) {
-                                // Duplicate more items (aria-hidden) to make the loop seamless even with few images
-                                appendSet(track, true);
-                                appendSet(track, true);
-                                ensureIterations++;
-                            } else {
-                                break;
-                            }
-                        } while (true);
+                        var setSize = sources.length;               // images per set
+                        var distance = 0;                            // width of one set in px
+                        var pxPerSec = 160;                          // scroll speed (px/sec)
+                        var offset = 0;
+                        var lastTs = null;
+                        var paused = false;
+                        var interacting = false;
+                        var resumeTimer = null;
 
-                        // Fallback CSS animation (if JS disabled): double speed by halving duration
-                        var pxPerSec = 160; // doubled auto-scroll speed (px/sec)
-                        var duration = Math.max(10, Math.min(120, distance / pxPerSec));
-                        track.style.setProperty('--row-duration', duration + 's');
+                        function measureOneSetWidth() {
+                            // Sum widths (including 16px gap) of the first "setSize" children
+                            var w = 0;
+                            var children = track.children;
+                            var n = Math.min(setSize, children.length);
+                            for (var i = 0; i < n; i++) {
+                                w += (children[i].getBoundingClientRect().width || 0) + 16;
+                            }
+                            return Math.max(1, w);
+                        }
+
+                        function ensureTrackFill() {
+                            // Ensure the track is long enough to cover container + one extra set
+                            var containerWidth = row.getBoundingClientRect().width || row.clientWidth || 0;
+                            var safety = 0;
+                            while ((track.scrollWidth < containerWidth + distance) && safety < 10) {
+                                appendSet(track, true);
+                                safety++;
+                            }
+                        }
+
+                        function recalcDistance() {
+                            var oldDistance = distance;
+                            distance = measureOneSetWidth();
+
+                            // If images are tiny or not loaded yet, try to extend the track a bit
+                            ensureTrackFill();
+
+                            // Update fallback CSS animation duration (if JS disabled)
+                            var duration = Math.max(10, Math.min(120, distance / pxPerSec));
+                            track.style.setProperty('--row-duration', duration + 's');
+
+                            // Keep current visual position smooth by normalizing within new distance
+                            if (oldDistance && Math.abs(oldDistance - distance) > 0.5) {
+                                normalize();
+                                render();
+                            }
+                        }
 
                         // Switch to JS ticker for fine-grained control and interactions
                         track.style.animation = 'none'; // disable CSS animation (keep as fallback in CSS)
@@ -689,13 +709,9 @@
                         // Nice drag cursor feedback
                         try { row.style.cursor = 'grab'; } catch (_e) {}
 
-                        var isRTL = (row.getAttribute('dir') || (document.documentElement && document.documentElement.dir) || '').toLowerCase() === 'rtl';
-                        var velocity = (isRTL ? 1 : -1) * pxPerSec; // px/sec
-                        var offset = 0;
-                        var lastTs = null;
-                        var paused = false;
-                        var interacting = false;
-                        var resumeTimer = null;
+                        function isRTLNow() {
+                            return ((row.getAttribute('dir') || (document.documentElement && document.documentElement.dir) || '') + '').toLowerCase() === 'rtl';
+                        }
 
                         function normalize() {
                             if (!distance) return;
@@ -716,13 +732,33 @@
                             if (lastTs == null) lastTs = ts;
                             var dt = (ts - lastTs) / 1000;
                             lastTs = ts;
-                            if (!paused) {
+                            if (!paused && distance > 0) {
+                                var velocity = (isRTLNow() ? 1 : -1) * pxPerSec; // px/sec
                                 offset += velocity * dt;
                                 normalize();
                                 render();
                             }
                             requestAnimationFrame(ticker);
                         }
+
+                        // Initial calc (after first paint) and set up observers for dynamic widths
+                        recalcDistance();
+
+                        // Recalculate when any image finishes loading (handles late sizing)
+                        Array.prototype.forEach.call(track.querySelectorAll('img'), function (im) {
+                            // Some browsers may fire 'load' immediately if cached; safe to attach
+                            im.addEventListener('load', function () {
+                                recalcDistance();
+                            }, { once: true });
+                        });
+
+                        // Recalculate on resize (layout changes / orientation / responsive)
+                        var resizeTimer = null;
+                        window.addEventListener('resize', function () {
+                            try { clearTimeout(resizeTimer); } catch (_e) {}
+                            resizeTimer = setTimeout(recalcDistance, 100);
+                        });
+
                         requestAnimationFrame(ticker);
 
                         // Hover pause/resume
@@ -784,9 +820,9 @@
                                 paused = true;
                                 // Visual intent: ArrowLeft moves view left (content goes right)
                                 if (key === 'ArrowLeft') {
-                                    offset += (isRTL ? step : -step);
+                                    offset += (isRTLNow() ? step : -step);
                                 } else {
-                                    offset += (isRTL ? -step : step);
+                                    offset += (isRTLNow() ? -step : step);
                                 }
                                 normalize();
                                 render();
