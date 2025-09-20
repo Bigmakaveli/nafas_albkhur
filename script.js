@@ -74,79 +74,153 @@
                 email_label: 'Email: info@nafsalbokhor.com',
                 footer_text: 'All rights reserved © 2025'
             },
-            es: {
-                brand_name: 'Nafs AlBukhoor',
+            he: {
+                brand_name: 'نفس البخور',
                 // Navigation
-                nav_home: 'Inicio',
-                nav_products: 'Productos',
-                nav_about: 'Sobre nosotros',
-                nav_story: 'Nuestra historia',
-                nav_features: 'Características',
-                nav_testimonials: 'Testimonios',
-                nav_contact: 'Contacto',
+                nav_home: 'בית',
+                nav_products: 'מוצרים',
+                nav_about: 'אודותינו',
+                nav_story: 'הסיפור שלנו',
+                nav_features: 'מאפיינים',
+                nav_testimonials: 'המלצות',
+                nav_contact: 'צור קשר',
                 // Hero
-                hero_title: 'Eleva tu esencia',
-                hero_description: 'Perfumes emiratíes de lujo, creados con alma árabe',
-                hero_cta: 'Ver la colección',
+                hero_title: 'רוממו את הניחוח שלכם',
+                hero_description: 'בשמים אמירתיים יוקרתיים, נרקחו ברוח ערבית',
+                hero_cta: 'גלו את הקולקציה',
                 // About
-                about_title: 'Sobre nosotros',
-                about_text: 'Nafs AlBukhoor selecciona perfumes emiratíes refinados con un alma árabe. Apostamos por la calidad, el servicio y una experiencia de compra hermosa.',
+                about_title: 'אודותינו',
+                about_text: 'Nafs AlBukhoor מציעה בשמים אמירתיים מעודנים עם נשמה ערבית. אנו מחויבים לאיכות, לשירות ולחוויית קנייה יפה.',
                 // Story
-                story_title: 'Nuestra historia',
-                story_text: 'Nacida de la pasión por la alta perfumería, nuestra historia une artesanía y cultura para llevar aromas auténticos a los amantes del perfume.',
+                story_title: 'הסיפור שלנו',
+                story_text: 'מתוך תשוקה לעולם הניחוחות, סיפורנו הוא על מלאכת מחשבת ותרבות—מביאים ארומות אותנטיות לחובבי בישום מודרניים.',
                 // Features
-                features_title: 'Características únicas',
-                feature_1_title: 'Calidad artesanal',
-                feature_1_text: 'Mezclas meticulosas con ingredientes de calidad.',
-                feature_2_title: 'Herencia árabe',
-                feature_2_text: 'Diseños inspirados en el arte árabe atemporal.',
-                feature_3_title: 'Elegancia moderna',
-                feature_3_text: 'Un toque contemporáneo para el lujo diario.',
+                features_title: 'מאפיינים ייחודיים',
+                feature_1_title: 'איכות מעשה־יד',
+                feature_1_text: 'בלנדים מוקפדים עם רכיבים איכותיים.',
+                feature_2_title: 'מורשת ערבית',
+                feature_2_text: 'עיצובים בהשראת אמנות ערבית על־זמנית.',
+                feature_3_title: 'אלגנטיות מודרנית',
+                feature_3_text: 'נגיעה עכשווית ללוקס יומיומי.',
                 // Testimonials
-                testimonials_title: 'Lo que dicen nuestros clientes',
-                testimonial_1: '“Aromas inolvidables: ricos, elegantes y duraderos.”',
-                testimonial_2: '“Frascos bellos y una experiencia de unboxing increíble.”',
-                testimonial_3: '“El servicio al cliente fue excelente de principio a fin.”',
+                testimonials_title: 'מה הלקוחות שלנו אומרים',
+                testimonial_1: '“הניחוחות נשארים בזיכרון—עשירים, אלגנטיים ובעלי עמידות גבוהה.”',
+                testimonial_2: '“בקבוקים יפים וחוויית פתיחה מרגשת.”',
+                testimonial_3: '“שירות הלקוחות היה מצוין מהתחלה ועד הסוף.”',
                 // Products (placeholders)
                 product_1_name: 'Al Noble Safeer',
-                product_1_desc: 'Un acorde noble con oud de lujo.',
+                product_1_desc: 'אקורד אצילי עם עץ אוד יוקרתי.',
                 product_1_price: '$89',
-                product_1_cta: 'Ver detalles',
+                product_1_cta: 'צפו בפרטים',
                 product_2_name: 'Musk Mood',
-                product_2_desc: 'Musk oriental suave con un toque mágico.',
+                product_2_desc: 'מושק אוריינטלי רך עם נגיעה קסומה.',
                 product_2_price: '$79',
-                product_2_cta: 'Ver detalles',
+                product_2_cta: 'צפו בפרטים',
                 product_3_name: 'Musk & Oud Mood Set',
-                product_3_desc: 'Set dúo que combina la riqueza del musk y el oud.',
+                product_3_desc: 'סט זוגי המשלב עושר של מושק ואוד.',
                 product_3_price: '$149',
-                product_3_cta: 'Ver detalles',
+                product_3_cta: 'צפו בפרטים',
                 product_4_name: 'Oud Mood',
-                product_4_desc: 'Oud elegante en un frasco dorado.',
+                product_4_desc: 'אוד אלגנטי בבקבוק מוזהב.',
                 product_4_price: '$95',
-                product_4_cta: 'Ver detalles',
+                product_4_cta: 'צפו בפרטים',
                 product_5_name: 'Rouat Al Musk',
-                product_5_desc: 'Musk clásico con un acabado refinado.',
+                product_5_desc: 'מושק קלאסי עם פיניש מעודן.',
                 product_5_price: '$82',
-                product_5_cta: 'Ver detalles',
+                product_5_cta: 'צפו בפרטים',
                 product_6_name: 'Mashair Aqua',
-                product_6_desc: 'Frescura acuática con profundidad amaderada.',
+                product_6_desc: 'רעננות ימית עם עומק עצי.',
                 product_6_price: '$88',
-                product_6_cta: 'Ver detalles',
+                product_6_cta: 'צפו בפרטים',
                 product_7_name: 'Ajwaa',
-                product_7_desc: 'Firma oriental inspirada en las palmeras.',
+                product_7_desc: 'חתימה אוריינטלית בהשראת דקלים.',
                 product_7_price: '$99',
-                product_7_cta: 'Ver detalles',
+                product_7_cta: 'צפו בפרטים',
                 product_8_name: 'Thanaghum',
-                product_8_desc: 'Un delicado ramo floral de rosas.',
+                product_8_desc: 'זר עדין של פרחי ורדים.',
                 product_8_price: '$84',
-                product_8_cta: 'Ver detalles',
+                product_8_cta: 'צפו בפרטים',
                 // Contact & Footer
-                contact_title: 'Contáctanos',
-                location_label: 'Ubicación: Haifa',
-                hours_label: 'Horario: 10:00 – 21:00',
-                phone_label: 'Teléfono: 000-000-0000',
-                email_label: 'Correo: info@nafsalbokhor.com',
-                footer_text: 'Todos los derechos reservados © 2025'
+                contact_title: 'צור קשר',
+                location_label: 'מיקום: חיפה',
+                hours_label: 'שעות: 10:00 – 21:00',
+                phone_label: 'טלפון: 000-000-0000',
+                email_label: 'אימייל: info@nafsalbokhor.com',
+                footer_text: 'כל הזכויות שמורות © 2025'
+            },
+            ar: {
+                brand_name: 'نفس البخور',
+                // Navigation
+                nav_home: 'الرئيسية',
+                nav_products: 'المنتجات',
+                nav_about: 'من نحن',
+                nav_story: 'قصتنا',
+                nav_features: 'المزايا',
+                nav_testimonials: 'آراء العملاء',
+                nav_contact: 'تواصل',
+                // Hero
+                hero_title: 'ارتقِ بعطرك',
+                hero_description: 'عطور إماراتية فاخرة بروح عربية',
+                hero_cta: 'اكتشفوا المجموعة',
+                // About
+                about_title: 'من نحن',
+                about_text: 'Nafs AlBukhoor تقدّم عطورًا إماراتية راقية ممزوجة بروح عربية. نلتزم بالجودة والخدمة وتجربة تسوّق جميلة.',
+                // Story
+                story_title: 'قصتنا',
+                story_text: 'وُلدت من شغف بالعطور الراقية؛ قصتنا حكاية حرفة وثقافة—ننقل روائح أصيلة لعشّاق العطر المعاصرين.',
+                // Features
+                features_title: 'مزايا فريدة',
+                feature_1_title: 'جودة مصنوعة بإتقان',
+                feature_1_text: 'تركيبات دقيقة بمكوّنات عالية الجودة.',
+                feature_2_title: 'إرث عربي',
+                feature_2_text: 'تصاميم بوحي الفن العربي الخالد.',
+                feature_3_title: 'أناقة عصرية',
+                feature_3_text: 'لمسة معاصرة لفخامة يومية.',
+                // Testimonials
+                testimonials_title: 'ماذا يقول عملاؤنا',
+                testimonial_1: '“عطور لا تُنسى—غنية وأنيقة وطويلة الثبات.”',
+                testimonial_2: '“زجاجات جميلة وتجربة فتح علبة مبهرة.”',
+                testimonial_3: '“خدمة عملاء مميّزة من البداية إلى النهاية.”',
+                // Products (placeholders)
+                product_1_name: 'Al Noble Safeer',
+                product_1_desc: 'نغمة نبيلة مع عود فاخر.',
+                product_1_price: '$89',
+                product_1_cta: 'عرض التفاصيل',
+                product_2_name: 'Musk Mood',
+                product_2_desc: 'مسك شرقي ناعم بلمسة سحرية.',
+                product_2_price: '$79',
+                product_2_cta: 'عرض التفاصيل',
+                product_3_name: 'Musk & Oud Mood Set',
+                product_3_desc: 'طقم ثنائي يجمع غنى المسك والعود.',
+                product_3_price: '$149',
+                product_3_cta: 'عرض التفاصيل',
+                product_4_name: 'Oud Mood',
+                product_4_desc: 'عود أنيق في زجاجة ذهبية.',
+                product_4_price: '$95',
+                product_4_cta: 'عرض التفاصيل',
+                product_5_name: 'Rouat Al Musk',
+                product_5_desc: 'مسك كلاسيكي بلمسة نهائية مصقولة.',
+                product_5_price: '$82',
+                product_5_cta: 'عرض التفاصيل',
+                product_6_name: 'Mashair Aqua',
+                product_6_desc: 'انتعاش مائي مع عمق خشبي.',
+                product_6_price: '$88',
+                product_6_cta: 'عرض التفاصيل',
+                product_7_name: 'Ajwaa',
+                product_7_desc: 'بصمة شرقية مستوحاة من النخيل.',
+                product_7_price: '$99',
+                product_7_cta: 'عرض التفاصيل',
+                product_8_name: 'Thanaghum',
+                product_8_desc: 'باقة زهرية رقيقة من الورود.',
+                product_8_price: '$84',
+                product_8_cta: 'عرض التفاصيل',
+                // Contact & Footer
+                contact_title: 'تواصل معنا',
+                location_label: 'الموقع: حيفا',
+                hours_label: 'ساعات العمل: 10:00 – 21:00',
+                phone_label: 'الهاتف: 000-000-0000',
+                email_label: 'البريد الإلكتروني: info@nafsalbokhor.com',
+                footer_text: 'جميع الحقوق محفوظة © 2025'
             }
         };
         function setLanguage(lang) {
@@ -223,9 +297,14 @@
             setText('email-label', tr.email_label);
             setText('footer-text', tr.footer_text);
 
-            // Always LTR for English & Spanish
+            // Set language and direction (RTL for Hebrew/Arabic)
             document.documentElement.lang = lang;
-            document.documentElement.dir = 'ltr';
+            document.documentElement.dir = (lang === 'ar' || lang === 'he') ? 'rtl' : 'ltr';
+
+            // Persist selection
+            try {
+                localStorage.setItem('site_lang', lang);
+            } catch (e) {}
 
             // Update active class on language switchers
             document.querySelectorAll('.lang-switcher a').forEach(function(a) {
@@ -330,7 +409,7 @@
         }
         
         // Bind click events to language links (both desktop and mobile)
-        ['en','es'].forEach(function(lang) {
+        ['he','ar','en'].forEach(function(lang) {
             const link = document.getElementById('lang-' + lang);
             const mobileLink = document.getElementById('lang-' + lang + '-mobile');
             
@@ -354,7 +433,12 @@
             }
         });
         
-        // Initialize mobile menu and default language
+        // Initialize mobile menu and default language (with persistence)
         initMobileMenu();
-        setLanguage('en');
+        let savedLang = 'he';
+        try {
+            const stored = localStorage.getItem('site_lang');
+            if (stored) savedLang = stored;
+        } catch (e) {}
+        setLanguage(savedLang);
     })();
