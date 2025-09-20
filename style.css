@@ -830,31 +830,41 @@
             .hero .hero-brand-title { display: block; }
         }
 
-        /* Desktop design upgrades (min-width: 992px) */
-        @media (min-width: 992px) {
-            /* Header: logo left, controls + nav right with generous spacing */
+        /* Desktop design upgrades (min-width: 1024px) */
+        @media (min-width: 1024px) {
+            /* Reserve space for fixed header */
+            body { padding-top: 64px; }
+            /* Header: compact, fixed; logo right in RTL */
             header {
-                position: sticky;
+                position: fixed;
                 top: 0;
-                height: 96px;
-                padding: 0 40px;
+                left: 0;
+                right: 0;
+                height: 64px;
+                padding: 12px 40px;
                 display: flex;
                 align-items: center;
-                gap: 20px;
+                justify-content: flex-start;
+                gap: 16px;
                 z-index: 1100;
+                border-bottom: none;
+                box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+                background-color: var(--nav-bg);
             }
             /* Show header brand on desktop even if hidden for ≥768px */
             header .brand {
                 display: block !important;
                 position: static;
                 transform: none;
-                text-align: left;
+                text-align: right;
                 max-width: 40%;
-                margin: 0;
+                max-height: 48px;
+                margin: 0 24px 0 0; /* 24px right margin in RTL */
                 white-space: nowrap;
                 overflow: hidden;
                 text-overflow: ellipsis;
                 pointer-events: auto;
+                order: 1; /* place logo at the far right in RTL */
             }
             header .brand .brand-latin,
             header .brand .brand-ar,
@@ -863,18 +873,20 @@
             }
             /* Controls and nav aligned to the right */
             header .extra-controls {
-                margin-left: auto;          /* push to the right */
+                margin-left: 0;
                 position: static;
                 transform: none;
                 display: flex;
                 align-items: center;
                 gap: 16px;
                 font-size: 15px;
+                order: 3;
             }
             header nav {
                 display: flex;
                 align-items: center;
-                gap: 24px;                  /* increased spacing */
+                gap: 16px;
+                order: 2;
             }
             header nav a {
                 margin: 0;
@@ -884,23 +896,24 @@
             .nav a,
             .menu-button,
             nav a {
-                border: 1px solid rgba(0, 0, 0, 0.08);
-                border-radius: 10px;
-                padding: 12px 20px;
+                border: 1px solid #e0d6d0;
+                border-radius: 8px;
+                padding: 8px 14px;
                 font-weight: 600;
                 color: #0b2240;
                 background: transparent;
                 text-decoration: none;
-                box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
-                transition: background-color 180ms ease, box-shadow 180ms ease, transform 180ms ease;
+                box-shadow: none;
+                transition: border-color 180ms ease, transform 180ms ease;
                 line-height: 1;
             }
             .nav a:hover,
             .menu-button:hover,
             nav a:hover {
-                background: #eef4ff;
-                transform: translateY(-3px) scale(1.02);
-                box-shadow: 0 8px 20px rgba(11, 34, 64, 0.12);
+                background: transparent;
+                border-color: #d5c7bd;
+                transform: translateY(-1px);
+                box-shadow: none;
             }
             .nav a:active,
             .menu-button:active,
