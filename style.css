@@ -65,6 +65,10 @@
         .brand-line {
             display: block;
         }
+        /* Show only the active brand line; hide others accessibly */
+        .brand-line[aria-hidden="true"] {
+            display: none !important;
+        }
         .brand-latin {
             font-size: 1.15rem;
             color: var(--secondary-accent);

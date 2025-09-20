@@ -11,9 +11,9 @@
     <header>
         <!-- Brand name with ID for translations -->
         <div class="brand" id="brand-name" aria-label="Brand name in three languages">
-            <span class="brand-line brand-latin">Nafas Al Bkhor</span>
-            <span class="brand-line brand-ar">نفس البخور</span>
-            <span class="brand-line brand-he">נפס אל בח’ור</span>
+            <span class="brand-line brand-latin" data-lang="en" aria-hidden="true">Nafas Al Bkhor</span>
+            <span class="brand-line brand-ar" data-lang="ar" aria-hidden="true">نفس البخور</span>
+            <span class="brand-line brand-he" data-lang="he" aria-hidden="false">נפס אל בח’ור</span>
         </div>
         
         <!-- Mobile menu toggle button -->
@@ -34,9 +34,9 @@
         <!-- Extra controls for language switching and social links -->
         <div class="extra-controls">
             <div class="lang-switcher" aria-label="Language switcher">
-                <a id="lang-he" class="active" role="button" tabindex="0" aria-label="Switch to Hebrew">עברית</a> |
-                <a id="lang-ar" role="button" tabindex="0" aria-label="Switch to Arabic">العربية</a> |
-                <a id="lang-en" role="button" tabindex="0" aria-label="Switch to English">EN</a>
+                <a id="lang-he" class="active" role="button" tabindex="0" aria-label="Switch to Hebrew" aria-pressed="true">עברית</a> |
+                <a id="lang-ar" role="button" tabindex="0" aria-label="Switch to Arabic" aria-pressed="false">العربية</a> |
+                <a id="lang-en" role="button" tabindex="0" aria-label="Switch to English" aria-pressed="false">EN</a>
             </div>
             <div class="social-links">
                 <a href="#" target="_blank" aria-label="Instagram">
@@ -65,9 +65,9 @@
             </nav>
             <div class="extra-controls">
                 <div class="lang-switcher" aria-label="Language switcher">
-                    <a id="lang-he-mobile" class="active" role="button" tabindex="0" aria-label="Switch to Hebrew">עברית</a> |
-                    <a id="lang-ar-mobile" role="button" tabindex="0" aria-label="Switch to Arabic">العربية</a> |
-                    <a id="lang-en-mobile" role="button" tabindex="0" aria-label="Switch to English">EN</a>
+                    <a id="lang-he-mobile" class="active" role="button" tabindex="0" aria-label="Switch to Hebrew" aria-pressed="true">עברית</a> |
+                    <a id="lang-ar-mobile" role="button" tabindex="0" aria-label="Switch to Arabic" aria-pressed="false">العربية</a> |
+                    <a id="lang-en-mobile" role="button" tabindex="0" aria-label="Switch to English" aria-pressed="false">EN</a>
                 </div>
                 <div class="social-links">
                     <a href="#" target="_blank" aria-label="Instagram">
@@ -88,9 +88,9 @@
     <!-- Mobile language bar (visible on mobile screens) -->
     <div class="mobile-lang-bar" aria-label="Language selector" role="navigation">
         <div class="lang-switcher">
-            <a id="lang-he-bar" class="active" role="button" tabindex="0" aria-label="Switch to Hebrew">עברית</a>
-            <a id="lang-ar-bar" role="button" tabindex="0" aria-label="Switch to Arabic">العربية</a>
-            <a id="lang-en-bar" role="button" tabindex="0" aria-label="Switch to English">EN</a>
+            <a id="lang-he-bar" class="active" role="button" tabindex="0" aria-label="Switch to Hebrew" aria-pressed="true">עברית</a>
+            <a id="lang-ar-bar" role="button" tabindex="0" aria-label="Switch to Arabic" aria-pressed="false">العربية</a>
+            <a id="lang-en-bar" role="button" tabindex="0" aria-label="Switch to English" aria-pressed="false">EN</a>
         </div>
     </div>
 

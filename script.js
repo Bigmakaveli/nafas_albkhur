@@ -305,16 +305,32 @@
                 localStorage.setItem('site_lang', lang);
             } catch (e) {}
 
-            // Update active class on language switchers
+            // Update active class and aria-pressed on language switchers
             document.querySelectorAll('.lang-switcher a').forEach(function(a) {
                 a.classList.remove('active');
+                a.setAttribute('aria-pressed', 'false');
             });
             const activeLink = document.getElementById('lang-' + lang);
             const activeLinkMobile = document.getElementById('lang-' + lang + '-mobile');
             const activeLinkBar = document.getElementById('lang-' + lang + '-bar');
-            if (activeLink) activeLink.classList.add('active');
-            if (activeLinkMobile) activeLinkMobile.classList.add('active');
-            if (activeLinkBar) activeLinkBar.classList.add('active');
+            if (activeLink) {
+                activeLink.classList.add('active');
+                activeLink.setAttribute('aria-pressed', 'true');
+            }
+            if (activeLinkMobile) {
+                activeLinkMobile.classList.add('active');
+                activeLinkMobile.setAttribute('aria-pressed', 'true');
+            }
+            if (activeLinkBar) {
+                activeLinkBar.classList.add('active');
+                activeLinkBar.setAttribute('aria-pressed', 'true');
+            }
+
+            // Toggle brand name visibility per selected language
+            document.querySelectorAll('#brand-name .brand-line').forEach(function(span) {
+                var spanLang = span.getAttribute('data-lang');
+                span.setAttribute('aria-hidden', (spanLang === lang) ? 'false' : 'true');
+            });
         }
         // Mobile menu functionality
         function initMobileMenu() {
