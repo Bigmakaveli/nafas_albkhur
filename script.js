@@ -654,13 +654,29 @@
                 // Adjust animation duration based on content width (one set distance)
                 requestAnimationFrame(function () {
                     try {
+                        // Ensure the width of one set covers at least the container to avoid visible gaps on small sets
+                        var ensureIterations = 0;
                         var total = 0;
-                        var children = track.children;
-                        for (var i = 0; i < children.length; i++) {
-                            // Sum intrinsic width + 16px spacing (matches CSS margin-right)
-                            total += children[i].getBoundingClientRect().width + 16;
-                        }
-                        var distance = Math.max(1, total / 2); // width of one set
+                        var children, distance, containerWidth;
+                        do {
+                            total = 0;
+                            children = track.children;
+                            for (var i = 0; i < children.length; i++) {
+                                // Sum intrinsic width + 16px spacing (matches CSS margin-right)
+                                total += children[i].getBoundingClientRect().width + 16;
+                            }
+                            distance = Math.max(1, total / 2); // width of one set
+                            containerWidth = row.getBoundingClientRect().width || row.clientWidth || 0;
+                            if (distance < containerWidth && ensureIterations < 6) {
+                                // Duplicate more items (aria-hidden) to make the loop seamless even with few images
+                                appendSet(track, true);
+                                appendSet(track, true);
+                                ensureIterations++;
+                            } else {
+                                break;
+                            }
+                        } while (true);
+
                         var pxPerSec = 80; // smooth constant speed (px/sec)
                         var duration = Math.max(20, Math.min(120, distance / pxPerSec));
                         track.style.setProperty('--row-duration', duration + 's');

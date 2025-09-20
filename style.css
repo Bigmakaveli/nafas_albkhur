@@ -599,19 +599,31 @@
         }
         .scrolling-row img:last-child { margin-right: 0; }
 
-        /* Auto-scrolling continuous row */
+        /* Auto-scrolling continuous row (LTR default) */
         .scrolling-row .scrolling-track {
             display: inline-flex;
             align-items: center;
             will-change: transform;
-            animation: scroll-row var(--row-duration, 40s) linear infinite;
+            animation: scroll-row-ltr var(--row-duration, 40s) linear infinite;
         }
+        /* Pause on hover */
         .scrolling-row:hover .scrolling-track {
             animation-play-state: paused; /* pause on hover */
         }
-        @keyframes scroll-row {
+        /* RTL: reverse direction when page or the row itself is RTL */
+        :root[dir="rtl"] .scrolling-row .scrolling-track,
+        .scrolling-row[dir="rtl"] .scrolling-track {
+            animation-name: scroll-row-rtl;
+        }
+        /* LTR keyframes: move left one set width */
+        @keyframes scroll-row-ltr {
             from { transform: translateX(0); }
             to   { transform: translateX(-50%); } /* move exactly one set width */
+        }
+        /* RTL keyframes: move right one set width */
+        @keyframes scroll-row-rtl {
+            from { transform: translateX(0); }
+            to   { transform: translateX(50%); } /* reverse direction for RTL */
         }
 
         /* Story */
