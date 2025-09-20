@@ -798,11 +798,13 @@
             letter-spacing: .4px;
         }
         .products-header .products-subtitle {
-            margin: 8px 0 24px;
+            margin: 8px 0 10px; /* reduced bottom margin for tighter spacing */
             font-size: 1.1rem;
             color: var(--secondary-accent);
             opacity: .9;
         }
+        /* Reduce top spacing before products grid */
+        #products-section { padding-top: 16px; }
 
         /* Mobile Responsive Design */
         @media (max-width: 1023px) {
