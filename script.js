@@ -510,6 +510,98 @@
             });
         }
         
+        /* ---------- Slideshow (auto-built from product images) ---------- */
+        function initSlideshow() {
+            try {
+                var container = document.getElementById('slideshow');
+                if (!container) return;
+
+                var slidesWrap = container.querySelector('.slides');
+                var indicatorsWrap = container.querySelector('.slideshow-indicators');
+
+                // Gather all product images (unique sources)
+                var productImgs = Array.prototype.slice.call(document.querySelectorAll('#products-section img'));
+                var seen = {};
+                var sources = [];
+                productImgs.forEach(function (img) {
+                    var src = (img.getAttribute('src') || '').trim();
+                    if (src && !seen[src]) {
+                        seen[src] = true;
+                        sources.push({ src: src, alt: img.getAttribute('alt') || '' });
+                    }
+                });
+
+                if (!sources.length) {
+                    // Hide slideshow section if no images found
+                    var wrap = document.getElementById('slideshow-section');
+                    if (wrap) wrap.style.display = 'none';
+                    return;
+                }
+
+                // Build slides and indicators
+                sources.forEach(function (o, idx) {
+                    var slide = document.createElement('div');
+                    slide.className = 'slide';
+                    var im = document.createElement('img');
+                    im.src = o.src;
+                    if (o.alt) im.alt = o.alt;
+                    slide.appendChild(im);
+                    slidesWrap.appendChild(slide);
+
+                    var dot = document.createElement('button');
+                    dot.type = 'button';
+                    dot.className = 'indicator' + (idx === 0 ? ' active' : '');
+                    dot.setAttribute('aria-label', 'Go to slide ' + (idx + 1));
+                    dot.addEventListener('click', function () { goTo(idx); });
+                    indicatorsWrap.appendChild(dot);
+                });
+
+                var current = 0;
+                var count = slidesWrap.children.length;
+                var timer = null;
+                var paused = false;
+                var INTERVAL = 3000;
+
+                function show(i) {
+                    current = (i + count) % count;
+                    var slides = slidesWrap.querySelectorAll('.slide');
+                    var dots = indicatorsWrap.querySelectorAll('.indicator');
+                    for (var k = 0; k < slides.length; k++) {
+                        slides[k].classList.toggle('active', k === current);
+                    }
+                    for (var d = 0; d < dots.length; d++) {
+                        dots[d].classList.toggle('active', d === current);
+                    }
+                }
+                function next() { show(current + 1); }
+                function prev() { show(current - 1); }
+                function goTo(i) { paused = true; show(i); }
+                function start() {
+                    stop();
+                    timer = setInterval(function () {
+                        if (!paused) next();
+                    }, INTERVAL);
+                }
+                function stop() { if (timer) { clearInterval(timer); timer = null; } }
+
+                // Controls
+                var prevBtn = container.querySelector('.slideshow-control.prev');
+                var nextBtn = container.querySelector('.slideshow-control.next');
+                if (prevBtn) prevBtn.addEventListener('click', function () { paused = true; prev(); });
+                if (nextBtn) nextBtn.addEventListener('click', function () { paused = true; next(); });
+
+                // Pause on hover (and resume)
+                container.addEventListener('mouseenter', function () { paused = true; });
+                container.addEventListener('mouseleave', function () { paused = false; });
+
+                // Initial
+                show(0);
+                start();
+            } catch (e) {
+                // Fail gracefully, don't break the site
+            }
+        }
+
         // Product filters (simple client-side)
         function initProductFilters() {
             const filterBar = document.querySelector('.product-filters');
@@ -572,9 +664,10 @@
             }
         });
         
-        // Initialize mobile menu, product filters, and default language (with persistence)
+        // Initialize mobile menu, product filters, slideshow, and default language (with persistence)
         initMobileMenu();
         initProductFilters();
+        initSlideshow();
         let savedLang = 'ar';
         try {
             const stored = localStorage.getItem('site_lang');

@@ -455,6 +455,127 @@
             margin: 0 0 10px;
         }
 
+        /* Slideshow (above Our Story) */
+        .slideshow-wrapper {
+            padding-top: 20px;
+            padding-bottom: 10px;
+        }
+        .slideshow {
+            position: relative;
+            max-width: 1100px;
+            margin: 0 auto 12px;
+            aspect-ratio: 16 / 9;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 26px rgba(0,0,0,0.10);
+            background: #f2efe9;
+        }
+        .slideshow .slides {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+        .slideshow .slide {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transform: scale(.92) rotate(-10deg);
+            transition: opacity .55s ease, transform .55s ease;
+            background: #eee;
+        }
+        .slideshow .slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            user-select: none;
+            -webkit-user-drag: none;
+        }
+        .slideshow .slide.active {
+            opacity: 1;
+            transform: scale(1) rotate(0deg);
+            animation: wheelIn .6s ease both;
+        }
+        @keyframes wheelIn {
+            from { opacity: .15; transform: scale(.9) rotate(-18deg); }
+            to   { opacity: 1;   transform: scale(1) rotate(0deg); }
+        }
+        .slideshow .slideshow-control {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 2;
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            border: 1px solid rgba(0,0,0,.15);
+            background: rgba(255,255,255,.85);
+            color: #5a402e;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: background-color .2s ease, transform .1s ease, box-shadow .2s ease;
+        }
+        .slideshow .slideshow-control:hover {
+            background: #fff;
+            box-shadow: 0 6px 16px rgba(0,0,0,.12);
+            transform: translateY(-50%) scale(1.03);
+        }
+        .slideshow .slideshow-control:active {
+            transform: translateY(-50%) scale(.98);
+        }
+        .slideshow .slideshow-control.prev { left: 10px; }
+        .slideshow .slideshow-control.next { right: 10px; }
+
+        .slideshow .slideshow-indicators {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: inline-flex;
+            gap: 8px;
+            z-index: 2;
+            padding: 4px 8px;
+            background: rgba(255,255,255,.7);
+            border-radius: 999px;
+            border: 1px solid rgba(0,0,0,.06);
+            box-shadow: 0 6px 16px rgba(0,0,0,.10);
+        }
+        .slideshow .slideshow-indicators .indicator {
+            width: 9px;
+            height: 9px;
+            border-radius: 50%;
+            border: 1px solid rgba(0,0,0,.15);
+            background: rgba(0,0,0,.2);
+            padding: 0;
+            display: inline-block;
+            cursor: pointer;
+            transition: background-color .2s ease, transform .2s ease, box-shadow .2s ease;
+        }
+        .slideshow .slideshow-indicators .indicator:hover {
+            background: rgba(0,0,0,.35);
+            transform: scale(1.08);
+        }
+        .slideshow .slideshow-indicators .indicator.active {
+            background: #a67c52;
+            border-color: #a67c52;
+            box-shadow: 0 0 0 3px rgba(166,124,82,.22);
+        }
+
+        /* Responsive tweaks for slideshow */
+        @media (max-width: 768px) {
+            .slideshow { aspect-ratio: 4 / 3; border-radius: 10px; }
+            .slideshow .slideshow-control { width: 38px; height: 38px; }
+            .slideshow .slideshow-indicators { bottom: 8px; gap: 6px; }
+        }
+        @media (max-width: 480px) {
+            .slideshow { aspect-ratio: 1 / 1; }
+            .slideshow .slideshow-control { width: 34px; height: 34px; }
+        }
+
         /* Story */
         .story p {
             max-width: 900px;
