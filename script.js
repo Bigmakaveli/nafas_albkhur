@@ -223,6 +223,27 @@
                 footer_text: 'جميع الحقوق محفوظة © 2025'
             }
         };
+        // Locale helpers: convert Latin digits to Arabic-Indic when Arabic is active
+        function convertDigitsToArabicInNode(node) {
+            const map = {'0':'٠','1':'١','2':'٢','3':'٣','4':'٤','5':'٥','6':'٦','7':'٧','8':'٨','9':'٩'};
+            function convertText(s) {
+                return s.replace(/[0-9]/g, d => map[d]);
+            }
+            const walker = document.createTreeWalker(node, NodeFilter.SHOW_TEXT, {
+                acceptNode: function(n) {
+                    if (!n.nodeValue || !/[0-9]/.test(n.nodeValue)) return NodeFilter.FILTER_SKIP;
+                    const p = n.parentNode && n.parentNode.nodeName;
+                    if (p === 'SCRIPT' || p === 'STYLE' || p === 'NOSCRIPT') return NodeFilter.FILTER_SKIP;
+                    return NodeFilter.FILTER_ACCEPT;
+                }
+            });
+            const toChange = [];
+            while (walker.nextNode()) {
+                toChange.push(walker.currentNode);
+            }
+            toChange.forEach(t => { t.nodeValue = convertText(t.nodeValue); });
+        }
+
         function setLanguage(lang) {
             const tr = translations[lang];
             if (!tr) return;
@@ -346,6 +367,11 @@
                 var spanLang = span.getAttribute('data-lang');
                 span.setAttribute('aria-hidden', (spanLang === lang) ? 'false' : 'true');
             });
+
+            // Locale-specific numeral shaping for Arabic
+            if (lang === 'ar') {
+                convertDigitsToArabicInNode(document.body);
+            }
         }
         // Mobile menu functionality
         function initMobileMenu() {
@@ -474,7 +500,7 @@
         
         // Initialize mobile menu and default language (with persistence)
         initMobileMenu();
-        let savedLang = 'he';
+        let savedLang = 'ar';
         try {
             const stored = localStorage.getItem('site_lang');
             if (stored) savedLang = stored;
