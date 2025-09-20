@@ -14,6 +14,9 @@
                 hero_title: 'Elevate Your Scent',
                 hero_description: 'Luxurious Emirati fragrances, crafted with an Arabic soul',
                 hero_cta: 'Shop the Collection',
+                // Products section heading
+                products_title: 'Our Curated Collection',
+                products_subtitle: 'We choose the best products just for you.',
                 // About
                 about_title: 'About Us',
                 about_text: 'Nafs AlBukhoor curates refined Emirati perfumes blended with an Arabic soul. We are dedicated to quality, service, and a beautiful shopping experience.',
@@ -89,6 +92,9 @@
                 hero_title: 'רוממו את הניחוח שלכם',
                 hero_description: 'בשמים אמירתיים יוקרתיים, נרקחו ברוח ערבית',
                 hero_cta: 'גלו את הקולקציה',
+                // Products section heading
+                products_title: 'האוסף המובחר שלנו',
+                products_subtitle: 'אנחנו בוחרים את המוצרים הטובים ביותר עבורך.',
                 // About
                 about_title: 'אודות',
                 about_text: 'Nafs AlBukhoor מציעה בשמים אמירתיים מעודנים עם נשמה ערבית. אנו מחויבים לאיכות, לשירות ולחוויית קנייה יפה.',
@@ -164,6 +170,9 @@
                 hero_title: 'ارتقِ بعطرك',
                 hero_description: 'عطور إماراتية فاخرة بروح عربية',
                 hero_cta: 'اكتشفوا المجموعة',
+                // Products section heading
+                products_title: 'تشكيلة مختارة',
+                products_subtitle: 'نختار أفضل المنتجات من أجلك.',
                 // About
                 about_title: 'من نحن',
                 about_text: 'Nafs AlBukhoor تقدّم عطورًا إماراتية راقية ممزوجة بروح عربية. نلتزم بالجودة والخدمة وتجربة تسوّق جميلة.',
@@ -323,6 +332,10 @@
             setText('hero-cta', tr.hero_cta);
             const cta = document.getElementById('hero-cta');
             if (cta) cta.setAttribute('aria-label', tr.hero_cta);
+
+            // Products header
+            setText('products-title', tr.products_title);
+            setText('products-subtitle', tr.products_subtitle);
 
             // Sections
             setText('about-title', tr.about_title);
