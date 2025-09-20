@@ -287,31 +287,31 @@
             fill: var(--primary-accent);
         }
 
-        /* Fixed language switcher on the left side of the screen (visible on all screens) */
+        /* Language bar directly beneath header (left-aligned, non-sticky) */
         .mobile-lang-bar {
-            position: fixed;
-            top: 50%;
-            left: 12px;
-            transform: translateY(-50%);
-            display: flex;
-            justify-content: center;
-            align-items: stretch;
-            padding: 10px 8px;
-            background-color: var(--nav-bg);
-            border: 1px solid var(--card-border);
-            border-radius: 10px;
-            box-shadow: 0 6px 18px rgba(0,0,0,.08);
-            z-index: 1500;
+            position: static;
+            top: auto;
+            left: auto;
+            transform: none;
+            width: 100%;
+            padding: 8px 16px 0;
+            background: transparent;
+            border: none;
+            border-radius: 0;
+            box-shadow: none;
+            z-index: auto;
         }
         .mobile-lang-bar .lang-switcher {
             display: flex;
-            flex-direction: column;
+            flex-direction: row;
+            justify-content: flex-start;
+            align-items: center;
             gap: 8px;
         }
         .mobile-lang-bar .lang-switcher a {
-            height: 30px;
-            padding: 4px 8px;
-            font-size: 12px;
+            height: auto;
+            padding: 4px 8px; /* smaller buttons */
+            font-size: 12px;  /* reduced font size */
         }
         .mobile-lang-bar .lang-switcher a.active {
             font-weight: 700;
@@ -503,38 +503,38 @@
                 display: none;
             }
 
-            /* Show standalone language bar below header on mobile */
+            /* Language bar directly beneath header (left-aligned, non-sticky) */
             .mobile-lang-bar {
-                position: fixed;
-                top: 50%;
-                left: 12px;
-                transform: translateY(-50%);
-                display: flex;
-                justify-content: center;
-                align-items: stretch;
-                padding: 10px 8px;
-                background-color: var(--nav-bg);
-                border: 1px solid var(--card-border);
-                border-radius: 10px;
-                box-shadow: 0 6px 18px rgba(0,0,0,.08);
-                z-index: 1500;
+                position: static;
+                top: auto;
+                left: auto;
+                transform: none;
+                width: 100%;
+                padding: 8px 16px 0;
+                background: transparent;
+                border: none;
+                border-radius: 0;
+                box-shadow: none;
+                z-index: auto;
             }
             .mobile-lang-bar .lang-switcher {
                 display: flex;
-                flex-direction: column;
+                flex-direction: row;
+                justify-content: flex-start;
+                align-items: center;
                 gap: 8px;
             }
             .mobile-lang-bar .lang-switcher a {
                 display: inline-flex;
                 align-items: center;
                 justify-content: center;
-                height: 30px;
-                padding: 4px 8px;
+                height: auto;
+                padding: 4px 8px; /* smaller buttons */
                 border: 1px solid var(--card-border);
                 border-radius: 6px;
                 color: var(--primary-accent);
                 text-decoration: none;
-                font-size: 12px;
+                font-size: 12px;  /* reduced font size */
                 background: #ffffff;
             }
             .mobile-lang-bar .lang-switcher a.active {
