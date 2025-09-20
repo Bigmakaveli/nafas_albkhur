@@ -320,7 +320,6 @@
 
         /* Mobile Menu */
         .mobile-menu {
-            display: none;
             position: fixed;
             top: 0; /* anchored to the top */
             left: 0;
@@ -332,6 +331,10 @@
             border-bottom: 1px solid var(--card-border);
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
             z-index: 1000;
+            transform: translateY(-100%);
+            opacity: 0;
+            pointer-events: none;
+            transition: transform .3s ease, opacity .2s ease;
         }
 
         .mobile-menu.active {
