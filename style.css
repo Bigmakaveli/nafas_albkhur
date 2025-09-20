@@ -46,6 +46,8 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            gap: 16px;
+            flex-wrap: nowrap;
             border-bottom: 1px solid var(--card-border);
             position: sticky;
             top: 0;
@@ -57,7 +59,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 2px;
+            gap: 1px;
             line-height: 1.15;
         }
         .brand-line {
@@ -202,7 +204,10 @@
         .extra-controls {
             display: flex;
             align-items: center;
-            gap: 20px;
+            gap: 12px;
+            margin-left: auto; /* keep controls on the right */
+            flex-wrap: nowrap; /* avoid wrapping off-screen */
+            white-space: nowrap;
         }
 
         .lang-switcher a {
@@ -210,6 +215,8 @@
             cursor: pointer;
             text-decoration: none;
             color: var(--primary-accent);
+            white-space: nowrap; /* keep short labels on one line */
+            font-size: .95rem;
         }
 
         .lang-switcher a.active {
@@ -390,8 +397,9 @@
         /* Tablet Styles (768px and below) */
         @media (max-width: 768px) {
             header {
-                padding: 15px 20px;
-                flex-wrap: wrap;
+                padding: 12px 16px;
+                max-height: 110px; /* keep header compact on tablet/mobile */
+                flex-wrap: nowrap;
             }
 
             header .brand .brand-latin { font-size: 1rem; }
@@ -407,13 +415,9 @@
             }
 
             .extra-controls {
-                display: flex;
-                width: 100%;
-                justify-content: center;
-                gap: 12px;
-                margin-top: 8px;
-                order: 3;
-                flex-wrap: wrap;
+                margin-left: auto;
+                gap: 8px;
+                flex-wrap: nowrap;
             }
             /* Hide only header social icons on mobile; keep them inside the mobile panel */
             header .social-links {
@@ -457,7 +461,8 @@
         /* Mobile Styles (480px and below) */
         @media (max-width: 480px) {
             header {
-                padding: 10px 15px;
+                padding: 8px 12px;
+                max-height: 96px; /* tighter cap on small phones */
             }
 
             header .brand .brand-latin { font-size: 0.95rem; }
@@ -521,8 +526,8 @@
             }
 
             .lang-switcher {
-                flex-direction: column;
-                gap: 10px;
+                flex-direction: row;
+                gap: 8px;
             }
 
             .lang-switcher a {
