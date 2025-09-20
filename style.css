@@ -6,6 +6,17 @@
             font-style: normal;
         }
 
+        /* ArabicBrand for header brand (prefer WOFF2/WOFF, fallback to existing TTF); swap for better UX */
+        @font-face {
+            font-family: 'ArabicBrand';
+            src: url('ArabicBrand.woff2') format('woff2'),
+                 url('ArabicBrand.woff') format('woff'),
+                 url('ae_rehan.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+            font-display: swap;
+        }
+
         /* Apply the Rihani font globally with fallbacks */
         body {
             font-family: 'Rihani', 'NotoKufiArabic', sans-serif;
@@ -65,7 +76,14 @@
         .brand-line {
             display: block;
             /* Force the Arabic font stack for all brand lines */
-            font-family: 'Rihani', 'NotoKufiArabic', 'Noto Sans Arabic', sans-serif;
+            font-family: 'ArabicBrand', 'Rihani', 'NotoKufiArabic', 'Noto Sans Arabic', sans-serif;
+        }
+        /* Header brand uses ArabicBrand; ensure crisp rendering on iOS */
+        header .brand,
+        .header-brand,
+        .site-header .brand {
+            font-family: 'ArabicBrand', sans-serif;
+            -webkit-font-smoothing: antialiased;
         }
         /* Show only the active brand line; hide others accessibly */
         .brand-line[aria-hidden="true"] {
