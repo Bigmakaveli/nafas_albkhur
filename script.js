@@ -311,8 +311,10 @@
             });
             const activeLink = document.getElementById('lang-' + lang);
             const activeLinkMobile = document.getElementById('lang-' + lang + '-mobile');
+            const activeLinkBar = document.getElementById('lang-' + lang + '-bar');
             if (activeLink) activeLink.classList.add('active');
             if (activeLinkMobile) activeLinkMobile.classList.add('active');
+            if (activeLinkBar) activeLinkBar.classList.add('active');
         }
         // Mobile menu functionality
         function initMobileMenu() {
@@ -411,6 +413,7 @@
         ['he','ar','en'].forEach(function(lang) {
             const link = document.getElementById('lang-' + lang);
             const mobileLink = document.getElementById('lang-' + lang + '-mobile');
+            const barLink = document.getElementById('lang-' + lang + '-bar');
             
             if (link) {
                 link.addEventListener('click', function() {
@@ -428,6 +431,12 @@
                         mobileMenu.classList.remove('active');
                         mobileMenuToggle.innerHTML = '☰';
                     }
+                });
+            }
+
+            if (barLink) {
+                barLink.addEventListener('click', function() {
+                    setLanguage(lang);
                 });
             }
         });

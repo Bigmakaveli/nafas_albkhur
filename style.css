@@ -236,6 +236,14 @@
             fill: var(--primary-accent);
         }
 
+        /* Mobile language bar (hidden by default; shown on mobile) */
+        .mobile-lang-bar {
+            display: none;
+        }
+        .mobile-lang-bar .lang-switcher a.active {
+            font-weight: 700;
+        }
+
         /* Buttons & Utilities */
         .btn {
             display: inline-block;
@@ -414,11 +422,45 @@
                 display: none;
             }
 
-            .extra-controls {
-                margin-left: auto;
-                gap: 8px;
-                flex-wrap: nowrap;
+            /* Hide header controls on mobile to reduce header height */
+            header .extra-controls {
+                display: none;
             }
+
+            /* Show standalone language bar below header on mobile */
+            .mobile-lang-bar {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                gap: 12px;
+                padding: 8px 12px;
+                background-color: var(--nav-bg);
+                border-bottom: 1px solid var(--card-border);
+            }
+            .mobile-lang-bar .lang-switcher {
+                display: flex;
+                gap: 12px;
+            }
+            .mobile-lang-bar .lang-switcher a {
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                min-width: 44px;
+                min-height: 36px;
+                padding: 6px 12px;
+                border: 1px solid var(--card-border);
+                border-radius: 18px;
+                color: var(--primary-accent);
+                text-decoration: none;
+                font-size: 0.95rem;
+                background: #ffffff;
+            }
+            .mobile-lang-bar .lang-switcher a.active {
+                background: var(--button-bg);
+                border-color: var(--button-bg);
+                color: var(--button-text);
+            }
+
             /* Hide only header social icons on mobile; keep them inside the mobile panel */
             header .social-links {
                 display: none;
