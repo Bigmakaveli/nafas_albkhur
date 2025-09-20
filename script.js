@@ -651,7 +651,7 @@
 
                 row.appendChild(track);
 
-                // Adjust animation duration based on content width (one set distance)
+                // Adjust animation/ticker based on content width (one set distance) and enable controls
                 requestAnimationFrame(function () {
                     try {
                         // Ensure the width of one set covers at least the container to avoid visible gaps on small sets
@@ -677,9 +677,123 @@
                             }
                         } while (true);
 
-                        var pxPerSec = 80; // smooth constant speed (px/sec)
-                        var duration = Math.max(20, Math.min(120, distance / pxPerSec));
+                        // Fallback CSS animation (if JS disabled): double speed by halving duration
+                        var pxPerSec = 160; // doubled auto-scroll speed (px/sec)
+                        var duration = Math.max(10, Math.min(120, distance / pxPerSec));
                         track.style.setProperty('--row-duration', duration + 's');
+
+                        // Switch to JS ticker for fine-grained control and interactions
+                        track.style.animation = 'none'; // disable CSS animation (keep as fallback in CSS)
+                        // Make row focusable for keyboard control
+                        if (!row.hasAttribute('tabindex')) { row.setAttribute('tabindex', '0'); }
+                        // Nice drag cursor feedback
+                        try { row.style.cursor = 'grab'; } catch (_e) {}
+
+                        var isRTL = (row.getAttribute('dir') || (document.documentElement && document.documentElement.dir) || '').toLowerCase() === 'rtl';
+                        var velocity = (isRTL ? 1 : -1) * pxPerSec; // px/sec
+                        var offset = 0;
+                        var lastTs = null;
+                        var paused = false;
+                        var interacting = false;
+                        var resumeTimer = null;
+
+                        function normalize() {
+                            if (!distance) return;
+                            while (offset <= -distance) offset += distance;
+                            while (offset >= distance) offset -= distance;
+                        }
+                        function render() {
+                            track.style.transform = 'translateX(' + Math.round(offset) + 'px)';
+                        }
+                        function scheduleResume() {
+                            try { clearTimeout(resumeTimer); } catch (_e) {}
+                            resumeTimer = setTimeout(function () {
+                                if (!interacting) paused = false;
+                                try { row.style.cursor = 'grab'; } catch (_e) {}
+                            }, 1000);
+                        }
+                        function ticker(ts) {
+                            if (lastTs == null) lastTs = ts;
+                            var dt = (ts - lastTs) / 1000;
+                            lastTs = ts;
+                            if (!paused) {
+                                offset += velocity * dt;
+                                normalize();
+                                render();
+                            }
+                            requestAnimationFrame(ticker);
+                        }
+                        requestAnimationFrame(ticker);
+
+                        // Hover pause/resume
+                        row.addEventListener('mouseenter', function () {
+                            paused = true; interacting = true;
+                        });
+                        row.addEventListener('mouseleave', function () {
+                            interacting = false; scheduleResume();
+                        });
+
+                        // Pointer drag / touch swipe (Pointer Events)
+                        var dragging = false;
+                        var lastX = 0;
+                        row.addEventListener('pointerdown', function (e) {
+                            dragging = true; interacting = true; paused = true;
+                            lastX = e.clientX;
+                            try { row.setPointerCapture(e.pointerId); } catch (_e) {}
+                            try { row.style.cursor = 'grabbing'; } catch (_e) {}
+                        });
+                        row.addEventListener('pointermove', function (e) {
+                            if (!dragging) return;
+                            var dx = e.clientX - lastX;
+                            lastX = e.clientX;
+                            offset += dx; // intuitive direct drag
+                            normalize();
+                            render();
+                            // prevent page selection/scroll during drag
+                            try { e.preventDefault(); } catch (_e) {}
+                        }, { passive: false });
+                        function endDrag(e) {
+                            if (!dragging) return;
+                            dragging = false; interacting = false;
+                            try { if (e && e.pointerId != null) row.releasePointerCapture(e.pointerId); } catch (_e) {}
+                            scheduleResume();
+                        }
+                        row.addEventListener('pointerup', endDrag);
+                        row.addEventListener('pointercancel', endDrag);
+                        row.addEventListener('pointerleave', endDrag);
+
+                        // Mouse wheel: horizontal scroll (Shift+wheel or trackpads with deltaX)
+                        row.addEventListener('wheel', function (e) {
+                            var dx = Math.abs(e.deltaX) > Math.abs(e.deltaY) ? e.deltaX : (e.shiftKey ? e.deltaY : 0);
+                            if (dx !== 0) {
+                                paused = true;
+                                // natural direction: wheel right => move content left
+                                offset -= dx;
+                                normalize();
+                                render();
+                                try { e.preventDefault(); } catch (_e) {}
+                                scheduleResume();
+                            }
+                        }, { passive: false });
+
+                        // Keyboard: left/right arrows
+                        row.addEventListener('keydown', function (e) {
+                            var key = e.key || e.code;
+                            if (key === 'ArrowLeft' || key === 'ArrowRight') {
+                                var step = 80; // px per keypress
+                                paused = true;
+                                // Visual intent: ArrowLeft moves view left (content goes right)
+                                if (key === 'ArrowLeft') {
+                                    offset += (isRTL ? step : -step);
+                                } else {
+                                    offset += (isRTL ? -step : step);
+                                }
+                                normalize();
+                                render();
+                                scheduleResume();
+                                try { e.preventDefault(); } catch (_e) {}
+                            }
+                        });
                     } catch (e) {}
                 });
             } catch (e) {}
