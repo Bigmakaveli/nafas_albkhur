@@ -581,9 +581,10 @@
             .hero h1 {
                 font-size: 2.5rem;
             }
+            /* On screens under 768px, hide the hero brand title to avoid duplication;
+               header brand remains visible */
             .hero .hero-brand-title {
-                font-size: 3.2rem;
-                margin-bottom: 10px;
+                display: none;
             }
 
             .hero p {
@@ -821,6 +822,12 @@
                 -webkit-transform: translateZ(0);
                 transform: translateZ(0);
             }
+        }
+
+        /* Responsive brand placement: hide header brand ≥768px, show hero brand; inverse on mobile */
+        @media (min-width: 768px) {
+            header .brand { display: none; }
+            .hero .hero-brand-title { display: block; }
         }
 
         /* Desktop-only header redesign (min-width: 1024px) */

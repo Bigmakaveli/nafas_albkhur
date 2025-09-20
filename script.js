@@ -233,7 +233,22 @@
                 if (el && typeof val === 'string') el.textContent = val;
             }
 
-            // Brand (static three-line branding; no dynamic replacement)
+            // Brand (dynamic): update header brand lines and hero brand per language
+            (function updateBrandTexts() {
+                const brandRoot = document.getElementById('brand-name');
+                if (brandRoot) {
+                    const enEl = brandRoot.querySelector('.brand-line[data-lang="en"]');
+                    const arEl = brandRoot.querySelector('.brand-line[data-lang="ar"]');
+                    const heEl = brandRoot.querySelector('.brand-line[data-lang="he"]');
+                    if (enEl && translations.en && translations.en.brand_name) enEl.textContent = translations.en.brand_name;
+                    if (arEl && translations.ar && translations.ar.brand_name) arEl.textContent = translations.ar.brand_name;
+                    if (heEl && translations.he && translations.he.brand_name) heEl.textContent = translations.he.brand_name;
+                }
+                const heroBrand = document.getElementById('hero-brand-name');
+                if (heroBrand && tr.brand_name) {
+                    heroBrand.textContent = tr.brand_name;
+                }
+            })();
 
             // Navigation (desktop)
             setText('nav-home', tr.nav_home);
