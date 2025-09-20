@@ -300,4 +300,3 @@
         initMobileMenu();
         setLanguage('en');
     })();
-    </script>
