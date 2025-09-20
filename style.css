@@ -890,8 +890,8 @@
                 order: 2;
                 margin-left: auto; /* push nav to the right */
             }
-            /* Show header language switcher on desktop and hide mobile language bar */
-            header .extra-controls .lang-switcher { display: inline-flex; }
+            /* Show language switcher inside nav on desktop; hide mobile bar */
+            header nav .lang-switcher { display: inline-flex; align-items: center; gap: 8px; margin-left: 12px; }
             .mobile-lang-bar { display: none; }
             header nav a {
                 margin: 0;
