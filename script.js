@@ -75,7 +75,7 @@
                 footer_text: 'All rights reserved © 2025'
             },
             he: {
-                brand_name: 'נפס אל־בخور',
+                brand_name: 'נפס אל־בכור',
                 // Navigation
                 nav_home: 'בית',
                 nav_products: 'מוצרים',
