@@ -625,14 +625,10 @@
 
         /* Scrolling Row (horizontal, large product images) */
         .scrolling-row {
-            display: flex;
-            align-items: center;
-            overflow-x: auto;            /* horizontal scroll */
-            overflow-y: hidden;
-            gap: 16px;                    /* spacing between images */
+            position: relative;
+            display: block;              /* container for animated track */
+            overflow: hidden;            /* hide overflow for seamless loop */
             padding: 8px 0;
-            scroll-snap-type: x mandatory; /* smooth snap scrolling on touch devices */
-            -webkit-overflow-scrolling: touch;
         }
         .scrolling-row img {
             height: 300px;               /* larger images as requested */
@@ -646,6 +642,21 @@
             -webkit-user-drag: none;
         }
         .scrolling-row img:last-child { margin-right: 0; }
+
+        /* Auto-scrolling continuous row */
+        .scrolling-row .scrolling-track {
+            display: inline-flex;
+            align-items: center;
+            will-change: transform;
+            animation: scroll-row var(--row-duration, 40s) linear infinite;
+        }
+        .scrolling-row:hover .scrolling-track {
+            animation-play-state: paused; /* pause on hover */
+        }
+        @keyframes scroll-row {
+            from { transform: translateX(0); }
+            to   { transform: translateX(-50%); } /* move exactly one set width */
+        }
 
         /* Story */
         .story p {

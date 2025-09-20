@@ -662,7 +662,7 @@
             } catch (e) {}
         }
 
-        /* ---------- Scrolling Row (append unique product images) ---------- */
+        /* ---------- Scrolling Row (auto-scrolling, seamless loop) ---------- */
         function initScrollingRow() {
             try {
                 var row = document.querySelector('.scrolling-row');
@@ -685,13 +685,45 @@
                     return;
                 }
 
-                sources.forEach(function (o) {
-                    var im = document.createElement('img');
-                    im.src = o.src;
-                    if (o.alt) im.alt = o.alt;
-                    im.loading = 'lazy';
-                    im.decoding = 'async';
-                    row.appendChild(im);
+                // Clear any previous contents
+                row.innerHTML = '';
+
+                // Build track and duplicate items for seamless looping
+                var track = document.createElement('div');
+                track.className = 'scrolling-track';
+
+                function appendSet(parent, ariaHidden) {
+                    sources.forEach(function (o) {
+                        var im = document.createElement('img');
+                        im.src = o.src;
+                        if (o.alt) im.alt = o.alt;
+                        if (ariaHidden) im.setAttribute('aria-hidden', 'true');
+                        im.loading = 'lazy';
+                        im.decoding = 'async';
+                        parent.appendChild(im);
+                    });
+                }
+
+                // Two sets for infinite loop
+                appendSet(track, false);
+                appendSet(track, true);
+
+                row.appendChild(track);
+
+                // Adjust animation duration based on content width (one set distance)
+                requestAnimationFrame(function () {
+                    try {
+                        var total = 0;
+                        var children = track.children;
+                        for (var i = 0; i < children.length; i++) {
+                            // Sum intrinsic width + 16px spacing (matches CSS margin-right)
+                            total += children[i].getBoundingClientRect().width + 16;
+                        }
+                        var distance = Math.max(1, total / 2); // width of one set
+                        var pxPerSec = 80; // smooth constant speed (px/sec)
+                        var duration = Math.max(20, Math.min(120, distance / pxPerSec));
+                        track.style.setProperty('--row-duration', duration + 's');
+                    } catch (e) {}
                 });
             } catch (e) {}
         }
