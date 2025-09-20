@@ -107,84 +107,85 @@
     </section>
     <!-- Products Section -->
     <section id="products-section" class="section products" aria-label="Products">
+        <div class="product-filters" role="toolbar" aria-label="Filter products">
+            <button type="button" class="filter-btn active" data-filter="all" aria-pressed="true">All</button>
+            <button type="button" class="filter-btn" data-filter="oud" aria-pressed="false">Oud</button>
+            <button type="button" class="filter-btn" data-filter="musk" aria-pressed="false">Musk</button>
+            <button type="button" class="filter-btn" data-filter="floral" aria-pressed="false">Floral</button>
+            <button type="button" class="filter-btn" data-filter="sets" aria-pressed="false">Sets</button>
+            <button type="button" class="filter-btn" data-filter="fresh" aria-pressed="false">Fresh</button>
+            <button type="button" class="filter-btn" data-filter="oriental" aria-pressed="false">Oriental</button>
+        </div>
         <!-- Product 1 -->
-        <div class="product-card" role="article" aria-labelledby="product-1-name">
-            <img src="https://via.placeholder.com/600x400?text=Product+1" alt="Product 1 placeholder image">
+        <div class="product-card" role="article" aria-labelledby="product-1-name" data-category="oud">
+            <img src="https://via.placeholder.com/600x400?text=Product+1" alt="Al Noble Safeer product image">
             <div class="info">
                 <h3 id="product-1-name">Al Noble Safeer</h3>
                 <p id="product-1-desc">A noble accord with luxurious oud.</p>
-                <p class="price" id="product-1-price">$89</p>
-                <a href="#" class="btn btn-primary" id="product-1-cta" aria-label="View details for product 1">View details</a>
+                <a href="#" class="more-link" id="product-1-cta" aria-label="View details for product 1">View details</a>
             </div>
         </div>
         <!-- Product 2 -->
-        <div class="product-card" role="article" aria-labelledby="product-2-name">
-            <img src="https://via.placeholder.com/600x400?text=Product+2" alt="Product 2 placeholder image">
+        <div class="product-card" role="article" aria-labelledby="product-2-name" data-category="musk">
+            <img src="https://via.placeholder.com/600x400?text=Product+2" alt="Musk Mood product image">
             <div class="info">
                 <h3 id="product-2-name">Musk Mood</h3>
                 <p id="product-2-desc">Soft oriental musk with a magical touch.</p>
-                <p class="price" id="product-2-price">$79</p>
-                <a href="#" class="btn btn-primary" id="product-2-cta" aria-label="View details for product 2">View details</a>
+                <a href="#" class="more-link" id="product-2-cta" aria-label="View details for product 2">View details</a>
             </div>
         </div>
         <!-- Product 3 -->
-        <div class="product-card" role="article" aria-labelledby="product-3-name">
-            <img src="https://via.placeholder.com/600x400?text=Product+3" alt="Product 3 placeholder image">
+        <div class="product-card" role="article" aria-labelledby="product-3-name" data-category="sets">
+            <img src="https://via.placeholder.com/600x400?text=Product+3" alt="Musk &amp; Oud Mood Set product image">
             <div class="info">
                 <h3 id="product-3-name">Musk &amp; Oud Mood Set</h3>
                 <p id="product-3-desc">A duo set of musk and oud richness.</p>
-                <p class="price" id="product-3-price">$149</p>
-                <a href="#" class="btn btn-primary" id="product-3-cta" aria-label="View details for product 3">View details</a>
+                <a href="#" class="more-link" id="product-3-cta" aria-label="View details for product 3">View details</a>
             </div>
         </div>
         <!-- Product 4 -->
-        <div class="product-card" role="article" aria-labelledby="product-4-name">
-            <img src="https://via.placeholder.com/600x400?text=Product+4" alt="Product 4 placeholder image">
+        <div class="product-card" role="article" aria-labelledby="product-4-name" data-category="oud">
+            <img src="https://via.placeholder.com/600x400?text=Product+4" alt="Oud Mood product image">
             <div class="info">
                 <h3 id="product-4-name">Oud Mood</h3>
                 <p id="product-4-desc">Elegant oud in a golden bottle.</p>
-                <p class="price" id="product-4-price">$95</p>
-                <a href="#" class="btn btn-primary" id="product-4-cta" aria-label="View details for product 4">View details</a>
+                <a href="#" class="more-link" id="product-4-cta" aria-label="View details for product 4">View details</a>
             </div>
         </div>
         <!-- Product 5 -->
-        <div class="product-card" role="article" aria-labelledby="product-5-name">
-            <img src="https://via.placeholder.com/600x400?text=Product+5" alt="Product 5 placeholder image">
+        <div class="product-card" role="article" aria-labelledby="product-5-name" data-category="musk">
+            <img src="https://via.placeholder.com/600x400?text=Product+5" alt="Rouat Al Musk product image">
             <div class="info">
                 <h3 id="product-5-name">Rouat Al Musk</h3>
                 <p id="product-5-desc">Classic musk with a refined finish.</p>
-                <p class="price" id="product-5-price">$82</p>
-                <a href="#" class="btn btn-primary" id="product-5-cta" aria-label="View details for product 5">View details</a>
+                <a href="#" class="more-link" id="product-5-cta" aria-label="View details for product 5">View details</a>
             </div>
         </div>
         <!-- Product 6 -->
-        <div class="product-card" role="article" aria-labelledby="product-6-name">
-            <img src="https://via.placeholder.com/600x400?text=Product+6" alt="Product 6 placeholder image">
+        <div class="product-card" role="article" aria-labelledby="product-6-name" data-category="fresh">
+            <img src="https://via.placeholder.com/600x400?text=Product+6" alt="Mashair Aqua product image">
             <div class="info">
                 <h3 id="product-6-name">Mashair Aqua</h3>
                 <p id="product-6-desc">Aquatic freshness with woody depth.</p>
-                <p class="price" id="product-6-price">$88</p>
-                <a href="#" class="btn btn-primary" id="product-6-cta" aria-label="View details for product 6">View details</a>
+                <a href="#" class="more-link" id="product-6-cta" aria-label="View details for product 6">View details</a>
             </div>
         </div>
         <!-- Product 7 -->
-        <div class="product-card" role="article" aria-labelledby="product-7-name">
-            <img src="https://via.placeholder.com/600x400?text=Product+7" alt="Product 7 placeholder image">
+        <div class="product-card" role="article" aria-labelledby="product-7-name" data-category="oriental">
+            <img src="https://via.placeholder.com/600x400?text=Product+7" alt="Ajwaa product image">
             <div class="info">
                 <h3 id="product-7-name">Ajwaa</h3>
                 <p id="product-7-desc">An oriental signature inspired by palms.</p>
-                <p class="price" id="product-7-price">$99</p>
-                <a href="#" class="btn btn-primary" id="product-7-cta" aria-label="View details for product 7">View details</a>
+                <a href="#" class="more-link" id="product-7-cta" aria-label="View details for product 7">View details</a>
             </div>
         </div>
         <!-- Product 8 -->
-        <div class="product-card" role="article" aria-labelledby="product-8-name">
-            <img src="https://via.placeholder.com/600x400?text=Product+8" alt="Product 8 placeholder image">
+        <div class="product-card" role="article" aria-labelledby="product-8-name" data-category="floral">
+            <img src="https://via.placeholder.com/600x400?text=Product+8" alt="Thanaghum product image">
             <div class="info">
                 <h3 id="product-8-name">Thanaghum</h3>
                 <p id="product-8-desc">A delicate floral bouquet of roses.</p>
-                <p class="price" id="product-8-price">$84</p>
-                <a href="#" class="btn btn-primary" id="product-8-cta" aria-label="View details for product 8">View details</a>
+                <a href="#" class="more-link" id="product-8-cta" aria-label="View details for product 8">View details</a>
             </div>
         </div>
     </section>

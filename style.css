@@ -161,15 +161,55 @@
         .products {
             background-color: var(--bg-color);
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
+            grid-template-columns: 1fr; /* 1 column on mobile by default */
+            gap: 28px;
+            align-items: stretch;
         }
+        /* Small, unobtrusive filter/category bar */
+        .product-filters {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 8px;
+            margin-inline: auto;
+            margin-block-end: 8px;
+            padding: 4px 2px;
+            color: var(--secondary-accent);
+        }
+        .product-filters .filter-btn {
+            appearance: none;
+            border: 1px solid var(--card-border);
+            background: #fff;
+            color: var(--secondary-accent);
+            border-radius: 999px;
+            padding: 6px 10px;
+            font-size: 13px;
+            line-height: 1;
+            cursor: pointer;
+            transition: background-color .2s ease, box-shadow .2s ease, color .2s ease, border-color .2s ease;
+        }
+        .product-filters .filter-btn:hover {
+            background: #f9f4ee;
+            border-color: #e2cfb6;
+        }
+        .product-filters .filter-btn.active {
+            background: #fbf7f2;
+            border-color: #d8c4a8;
+            color: var(--primary-accent);
+            font-weight: 700;
+        }
+        .product-filters .filter-btn:focus,
+        .product-filters .filter-btn:focus-visible {
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(166,124,82,0.28);
+        }
+
         .product-card {
             background-color: var(--card-bg);
             border: 1px solid var(--card-border);
             border-radius: 8px;
             overflow: hidden;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 2px 6px rgba(0,0,0,0.08);
             display: flex;
             flex-direction: column;
             transition: box-shadow 0.3s ease;
@@ -191,15 +231,18 @@
         }
         .product-card .info h3 {
             margin: 0 0 8px;
-            font-size: 1.2rem;
+            font-size: 1.25rem;
             color: var(--primary-accent);
+            font-family: 'Rihani', Georgia, 'Times New Roman', serif; /* serif-like for classic feel */
+            letter-spacing: .2px;
         }
         .product-card .info p {
             flex-grow: 1;
             margin: 0 0 12px;
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             color: var(--text-main);
-            line-height: 1.5;
+            line-height: 1.6;
+            font-family: 'Noto Sans Arabic', 'Rihani', system-ui, -apple-system, Segoe UI, sans-serif;
         }
         .product-card .info button {
             background-color: var(--button-bg);
@@ -214,6 +257,26 @@
         .product-card .info button:hover {
             background-color: var(--button-hover-bg);
             color: var(--button-hover-text);
+        }
+        /* Subtle "More details" link */
+        .product-card .info .more-link {
+            align-self: flex-start;
+            color: var(--secondary-accent);
+            text-decoration: none;
+            font-size: .95rem;
+            padding: 2px 0;
+            border-bottom: 1px dotted var(--secondary-accent);
+            transition: color .2s ease, border-color .2s ease;
+        }
+        .product-card .info .more-link:hover {
+            color: var(--primary-accent);
+            border-color: var(--primary-accent);
+        }
+        .product-card .info .more-link:focus,
+        .product-card .info .more-link:focus-visible {
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(166,124,82,0.28);
+            border-radius: 4px;
         }
         .about {
             background-image: linear-gradient(rgba(245,240,235,0.6), rgba(245,240,235,0.6));
@@ -599,7 +662,7 @@
             }
 
             .products {
-                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                grid-template-columns: 1fr; /* always single column on small screens */
                 gap: 20px;
             }
 
@@ -833,6 +896,10 @@
             .hero .hero-brand-title { display: block; }
         }
 
+        @media (min-width: 768px) and (max-width: 1023px) {
+            .products { grid-template-columns: repeat(2, 1fr); gap: 24px; }
+        }
+
         /* Desktop design upgrades (min-width: 1024px) */
         @media (min-width: 1024px) {
             /* Desktop: hero-first layout, header is sticky; no body offset needed */
@@ -1042,6 +1109,8 @@
             }
             .features .feature-item h3 { font-size: 1.2rem; }
             .features .feature-item p { font-size: 1rem; }
+
+            .products { grid-template-columns: repeat(3, 1fr); gap: 32px; }
 
             /* Gallery (if present): large uniform grid */
             .gallery-grid {
