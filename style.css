@@ -248,6 +248,10 @@
             flex-wrap: nowrap; /* avoid wrapping off-screen */
             white-space: nowrap;
         }
+        /* Hide header language switcher; use dedicated bar under header on all screens */
+        header .extra-controls .lang-switcher {
+            display: none;
+        }
 
         .lang-switcher a {
             margin: 0 5px;
@@ -255,7 +259,15 @@
             text-decoration: none;
             color: var(--primary-accent);
             white-space: nowrap; /* keep short labels on one line */
-            font-size: .95rem;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            height: 36px;
+            padding: 6px 10px;
+            border: 1px solid var(--card-border);
+            border-radius: 6px;
+            background: #ffffff;
+            font-size: 14px;
         }
 
         .lang-switcher a.active {
@@ -275,9 +287,19 @@
             fill: var(--primary-accent);
         }
 
-        /* Mobile language bar (hidden by default; shown on mobile) */
+        /* Language bar beneath the header (visible on all screens, centered) */
         .mobile-lang-bar {
-            display: none;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 12px;
+            padding: 8px 12px;
+            background-color: var(--nav-bg);
+            border-bottom: 1px solid var(--card-border);
+        }
+        .mobile-lang-bar .lang-switcher {
+            display: flex;
+            gap: 12px;
         }
         .mobile-lang-bar .lang-switcher a.active {
             font-weight: 700;
@@ -484,14 +506,13 @@
                 display: inline-flex;
                 align-items: center;
                 justify-content: center;
-                min-width: 44px;
-                min-height: 36px;
-                padding: 6px 12px;
+                height: 36px;
+                padding: 6px 10px;
                 border: 1px solid var(--card-border);
-                border-radius: 18px;
+                border-radius: 6px;
                 color: var(--primary-accent);
                 text-decoration: none;
-                font-size: 0.95rem;
+                font-size: 14px;
                 background: #ffffff;
             }
             .mobile-lang-bar .lang-switcher a.active {
