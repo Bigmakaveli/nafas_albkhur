@@ -76,7 +76,16 @@
                 phone_label: 'Phone: 000-000-0000',
                 email_label: 'Email: info@nafsalbokhor.com',
                 footer_text: 'All rights reserved © 2025',
-                whatsapp_label: 'Get via WhatsApp'
+                whatsapp_label: 'Get via WhatsApp',
+                // Contact form + address
+                contact_form_title: 'Send us a message',
+                form_name_label: 'Name',
+                form_email_label: 'Email',
+                form_message_label: 'Message',
+                form_submit: 'Send',
+                address_label: 'Address',
+                address_text: 'Hnamnim 1–3, Haifa, Israel',
+                map_title: 'Map of address'
             },
             he: {
                 brand_name: 'נפס אל־בכור',
@@ -154,7 +163,16 @@
                 phone_label: 'טלפון: 000-000-0000',
                 email_label: 'אימייל: info@nafsalbokhor.com',
                 footer_text: 'כל הזכויות שמורות © 2025',
-                whatsapp_label: 'קבל בוואטסאפ'
+                whatsapp_label: 'קבל בוואטסאפ',
+                // Contact form + address
+                contact_form_title: 'שלחו לנו הודעה',
+                form_name_label: 'שם',
+                form_email_label: 'אימייל',
+                form_message_label: 'הודעה',
+                form_submit: 'שלחו',
+                address_label: 'כתובת',
+                address_text: 'הנאמנים 1–3, חיפה, ישראל',
+                map_title: 'מפת הכתובת'
             },
             ar: {
                 brand_name: 'نفس البخور',
@@ -232,7 +250,16 @@
                 phone_label: 'الهاتف: 000-000-0000',
                 email_label: 'البريد الإلكتروني: info@nafsalbokhor.com',
                 footer_text: 'جميع الحقوق محفوظة © 2025',
-                whatsapp_label: 'احصل عبر الواتساب'
+                whatsapp_label: 'احصل عبر الواتساب',
+                // Contact form + address
+                contact_form_title: 'أرسلوا رسالة',
+                form_name_label: 'الاسم',
+                form_email_label: 'البريد الإلكتروني',
+                form_message_label: 'الرسالة',
+                form_submit: 'إرسال',
+                address_label: 'العنوان',
+                address_text: 'هنمنيم 1–3، حيفا، إسرائيل',
+                map_title: 'خريطة العنوان'
             }
         };
         // Locale helpers: convert Latin digits to Arabic-Indic when Arabic is active
@@ -367,10 +394,30 @@
 
             // Contact & footer
             setText('contact-title', tr.contact_title);
-            setText('location-label', tr.location_label);
-            setText('hours-label', tr.hours_label);
+            // Form texts
+            setText('contact-form-title', tr.contact_form_title);
+            setText('form-name-label', tr.form_name_label);
+            setText('form-email-label', tr.form_email_label);
+            setText('form-message-label', tr.form_message_label);
+            const inName = document.getElementById('form-name');
+            const inEmail = document.getElementById('form-email');
+            const inMsg = document.getElementById('form-message');
+            if (inName) inName.setAttribute('placeholder', tr.form_name_label);
+            if (inEmail) inEmail.setAttribute('placeholder', tr.form_email_label);
+            if (inMsg) inMsg.setAttribute('placeholder', tr.form_message_label);
+            const submitBtn = document.getElementById('form-submit');
+            if (submitBtn) submitBtn.textContent = tr.form_submit;
+
+            // Address + map
+            setText('address-label', tr.address_label);
+            setText('address-text', tr.address_text);
+            const map = document.getElementById('contact-map');
+            if (map && tr.map_title) map.setAttribute('title', tr.map_title);
+
+            // Contact details
             setText('phone-label', tr.phone_label);
             setText('email-label', tr.email_label);
+            // Footer
             setText('footer-text', tr.footer_text);
 
             // Set language and direction (RTL for Hebrew/Arabic)
