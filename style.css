@@ -275,6 +275,13 @@
             text-decoration: underline;
         }
 
+        /* Ensure language buttons have spacing on the right to avoid cropping */
+        .lang-switcher a,
+        .language-button,
+        .language-selector button {
+            margin-right: 12px;
+        }
+
         .social-links a {
             margin: 0 5px;
             display: inline-flex;
@@ -587,6 +594,13 @@
 
             .contact-details {
                 font-size: 1rem;
+            }
+        }
+
+        /* Narrow screens (600px and below) */
+        @media (max-width: 600px) {
+            .language-selector {
+                padding-right: 12px;
             }
         }
 
