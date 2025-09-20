@@ -240,35 +240,71 @@
         function initMobileMenu() {
             const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
             const mobileMenu = document.getElementById('mobile-menu');
-            
-            if (mobileMenuToggle && mobileMenu) {
-                mobileMenuToggle.addEventListener('click', function() {
-                    mobileMenu.classList.toggle('active');
-                    // Change hamburger icon to X when menu is open
-                    if (mobileMenu.classList.contains('active')) {
-                        mobileMenuToggle.innerHTML = '✕';
-                    } else {
-                        mobileMenuToggle.innerHTML = '☰';
-                    }
-                });
-                
-                // Close mobile menu when clicking on a link
-                const mobileNavLinks = mobileMenu.querySelectorAll('nav a');
-                mobileNavLinks.forEach(function(link) {
-                    link.addEventListener('click', function() {
-                        mobileMenu.classList.remove('active');
-                        mobileMenuToggle.innerHTML = '☰';
-                    });
-                });
-                
-                // Close mobile menu when clicking outside
-                document.addEventListener('click', function(event) {
-                    if (!mobileMenu.contains(event.target) && !mobileMenuToggle.contains(event.target)) {
-                        mobileMenu.classList.remove('active');
-                        mobileMenuToggle.innerHTML = '☰';
-                    }
-                });
+
+            if (!mobileMenuToggle || !mobileMenu) return;
+
+            // Ensure ARIA attributes for accessibility
+            mobileMenuToggle.setAttribute('aria-expanded', 'false');
+            mobileMenuToggle.setAttribute('aria-controls', 'mobile-menu');
+            mobileMenu.setAttribute('aria-hidden', 'true');
+
+            const OPEN_ICON = '✕';
+            const CLOSED_ICON = '☰';
+
+            function openMenu() {
+                mobileMenu.classList.add('active');
+                mobileMenuToggle.innerHTML = OPEN_ICON;
+                mobileMenuToggle.setAttribute('aria-expanded', 'true');
+                mobileMenu.setAttribute('aria-hidden', 'false');
             }
+
+            function closeMenu() {
+                mobileMenu.classList.remove('active');
+                mobileMenuToggle.innerHTML = CLOSED_ICON;
+                mobileMenuToggle.setAttribute('aria-expanded', 'false');
+                mobileMenu.setAttribute('aria-hidden', 'true');
+            }
+
+            function toggleMenu() {
+                if (mobileMenu.classList.contains('active')) {
+                    closeMenu();
+                } else {
+                    openMenu();
+                }
+            }
+
+            // Click toggles
+            mobileMenuToggle.addEventListener('click', toggleMenu);
+
+            // Keyboard support: Enter/Space toggle, Escape closes
+            mobileMenuToggle.addEventListener('keydown', function (e) {
+                const key = e.key || e.code;
+                if (key === 'Enter' || key === ' ' || key === 'Spacebar') {
+                    e.preventDefault();
+                    toggleMenu();
+                }
+            });
+
+            document.addEventListener('keydown', function (e) {
+                if (e.key === 'Escape' || e.key === 'Esc') {
+                    closeMenu();
+                }
+            });
+
+            // Close when clicking a link
+            const mobileNavLinks = mobileMenu.querySelectorAll('nav a');
+            mobileNavLinks.forEach(function (link) {
+                link.addEventListener('click', function () {
+                    closeMenu();
+                });
+            });
+
+            // Close when clicking outside
+            document.addEventListener('click', function (event) {
+                if (!mobileMenu.contains(event.target) && !mobileMenuToggle.contains(event.target)) {
+                    closeMenu();
+                }
+            });
         }
         
         // Bind click events to language links (both desktop and mobile)
