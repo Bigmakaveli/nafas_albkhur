@@ -140,6 +140,16 @@
             margin-bottom: 10px;
             color: var(--primary-accent);
         }
+        /* Prominent brand title above the hero headline */
+        .hero .hero-brand-title {
+            font-size: 4.2rem;           /* noticeably larger than the line below */
+            margin: 0 0 12px;            /* balanced spacing between the two lines */
+            color: var(--primary-accent);
+            font-weight: 800;
+            line-height: 1.05;
+            letter-spacing: .5px;
+            text-align: center;          /* ensure centered even if hero alignment changes */
+        }
         .hero p {
             font-size: 1.4rem;
             margin-bottom: 20px;
@@ -571,6 +581,10 @@
             .hero h1 {
                 font-size: 2.5rem;
             }
+            .hero .hero-brand-title {
+                font-size: 3.2rem;
+                margin-bottom: 10px;
+            }
 
             .hero p {
                 font-size: 1.2rem;
@@ -622,6 +636,10 @@
 
             .hero h1 {
                 font-size: 2rem;
+            }
+            .hero .hero-brand-title {
+                font-size: 2.4rem;
+                margin-bottom: 8px;
             }
 
             .hero p {
@@ -700,6 +718,10 @@
 
             .hero h1 {
                 font-size: 1.8rem;
+            }
+            .hero .hero-brand-title {
+                font-size: 2.1rem;
+                margin-bottom: 6px;
             }
 
             .hero p {
