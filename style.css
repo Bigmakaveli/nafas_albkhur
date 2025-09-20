@@ -522,7 +522,8 @@
                 top: auto;
                 left: auto;
                 transform: none;
-                width: 100%;
+                width: auto; /* allow margins without overflow */
+                margin: 0 16px; /* prevent cut off and keep centered inset */
                 padding: 8px 16px 0;
                 background: transparent;
                 border: none;
