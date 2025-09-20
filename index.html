@@ -1,13 +1,12 @@
 
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en" dir="ltr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>نفس البخور</title>
     <link rel="stylesheet" href="style.css">
-
-
+</head>
 <body>
     <header>
         <!-- Brand name with ID for translations -->
@@ -19,18 +18,20 @@
         </button>
         
         <!-- Navigation links with IDs for translations -->
-        <nav>
-            <a id="nav-home" href="#">الرئيسية</a>
-            <a id="nav-products" href="#products-section">المنتجات</a>
-            <a id="nav-about" href="#about-section">من نحن</a>
-            <a id="nav-contact" href="#contact-section">تواصل معنا</a>
+        <nav aria-label="Main navigation">
+            <a id="nav-home" href="#">Home</a>
+            <a id="nav-products" href="#products-section">Products</a>
+            <a id="nav-about" href="#about-section">About Us</a>
+            <a id="nav-story" href="#story-section">Our Story</a>
+            <a id="nav-features" href="#features-section">Features</a>
+            <a id="nav-testimonials" href="#testimonials-section">Testimonials</a>
+            <a id="nav-contact" href="#contact-section">Contact</a>
         </nav>
         <!-- Extra controls for language switching and social links -->
         <div class="extra-controls">
-            <div class="lang-switcher">
-                <a id="lang-ar" class="active">العربية</a> |
-                <a id="lang-he">עברית</a> |
-                <a id="lang-en">English</a>
+            <div class="lang-switcher" aria-label="Language switcher">
+                <a id="lang-en" class="active" role="button" tabindex="0" aria-label="Switch to English">EN</a> |
+                <a id="lang-es" role="button" tabindex="0" aria-label="Switch to Spanish">ES</a>
             </div>
             <div class="social-links">
                 <a href="#" target="_blank" aria-label="Instagram">
@@ -48,17 +49,19 @@
         
         <!-- Mobile Menu -->
         <div class="mobile-menu" id="mobile-menu">
-            <nav>
-                <a id="nav-home-mobile" href="#">الرئيسية</a>
-                <a id="nav-products-mobile" href="#products-section">المنتجات</a>
-                <a id="nav-about-mobile" href="#about-section">من نحن</a>
-                <a id="nav-contact-mobile" href="#contact-section">تواصل معنا</a>
+            <nav aria-label="Mobile navigation">
+                <a id="nav-home-mobile" href="#">Home</a>
+                <a id="nav-products-mobile" href="#products-section">Products</a>
+                <a id="nav-about-mobile" href="#about-section">About Us</a>
+                <a id="nav-story-mobile" href="#story-section">Our Story</a>
+                <a id="nav-features-mobile" href="#features-section">Features</a>
+                <a id="nav-testimonials-mobile" href="#testimonials-section">Testimonials</a>
+                <a id="nav-contact-mobile" href="#contact-section">Contact</a>
             </nav>
             <div class="extra-controls">
-                <div class="lang-switcher">
-                    <a id="lang-ar-mobile" class="active">العربية</a> |
-                    <a id="lang-he-mobile">עברית</a> |
-                    <a id="lang-en-mobile">English</a>
+                <div class="lang-switcher" aria-label="Language switcher">
+                    <a id="lang-en-mobile" class="active" role="button" tabindex="0" aria-label="Switch to English">EN</a> |
+                    <a id="lang-es-mobile" role="button" tabindex="0" aria-label="Switch to Spanish">ES</a>
                 </div>
                 <div class="social-links">
                     <a href="#" target="_blank" aria-label="Instagram">
@@ -75,85 +78,93 @@
             </div>
         </div>
     </header>
-    <section class="hero">
-        <h1 id="hero-title">نفس البخور</h1>
-        <p id="hero-description">عنوانك للتميز بعطور إماراتية فخمة صناعة عربية</p>
+    <section class="hero" aria-labelledby="hero-title">
+        <h1 id="hero-title">Elevate Your Scent</h1>
+        <p id="hero-description">Luxurious Emirati fragrances, crafted with an Arabic soul</p>
+        <a href="#products-section" id="hero-cta" class="btn btn-primary" aria-label="Shop the Collection">Shop the Collection</a>
     </section>
     <!-- Products Section -->
-    <section id="products-section" class="section products">
-
-        <div class="product-card">
+    <section id="products-section" class="section products" aria-label="Products">
+        <!-- Product 1 -->
+        <div class="product-card" role="article" aria-labelledby="product-1-name">
+            <img src="https://via.placeholder.com/600x400?text=Product+1" alt="Product 1 placeholder image">
             <div class="info">
-                <h3>أل نوبل سفير (Al Noble Safeer)</h3>
-                <p>عطر فاخر برائحة خشب عود وتألق نبيل.</p>
-                <button>أضف إلى السلة</button>
+                <h3 id="product-1-name">Al Noble Safeer</h3>
+                <p id="product-1-desc">A noble accord with luxurious oud.</p>
+                <p class="price" id="product-1-price">$89</p>
+                <a href="#" class="btn btn-primary" id="product-1-cta" aria-label="View details for product 1">View details</a>
             </div>
         </div>
-    
-
-        <div class="product-card">
+        <!-- Product 2 -->
+        <div class="product-card" role="article" aria-labelledby="product-2-name">
+            <img src="https://via.placeholder.com/600x400?text=Product+2" alt="Product 2 placeholder image">
             <div class="info">
-                <h3>مسك مود (Musk Mood)</h3>
-                <p>عطر المسك الشرقي بنفحات ناعمة وسحرية.</p>
-                <button>أضف إلى السلة</button>
+                <h3 id="product-2-name">Musk Mood</h3>
+                <p id="product-2-desc">Soft oriental musk with a magical touch.</p>
+                <p class="price" id="product-2-price">$79</p>
+                <a href="#" class="btn btn-primary" id="product-2-cta" aria-label="View details for product 2">View details</a>
             </div>
         </div>
-    
-
-        <div class="product-card">
+        <!-- Product 3 -->
+        <div class="product-card" role="article" aria-labelledby="product-3-name">
+            <img src="https://via.placeholder.com/600x400?text=Product+3" alt="Product 3 placeholder image">
             <div class="info">
-                <h3>مجموعة مسك وعود مود (Musk & Oud Mood Set)</h3>
-                <p>مجموعة ثنائية تضم عطرين بتوليفة مسك وعود غنية.</p>
-                <button>أضف إلى السلة</button>
+                <h3 id="product-3-name">Musk &amp; Oud Mood Set</h3>
+                <p id="product-3-desc">A duo set of musk and oud richness.</p>
+                <p class="price" id="product-3-price">$149</p>
+                <a href="#" class="btn btn-primary" id="product-3-cta" aria-label="View details for product 3">View details</a>
             </div>
         </div>
-    
-
-        <div class="product-card">
+        <!-- Product 4 -->
+        <div class="product-card" role="article" aria-labelledby="product-4-name">
+            <img src="https://via.placeholder.com/600x400?text=Product+4" alt="Product 4 placeholder image">
             <div class="info">
-                <h3>عود مود (Oud Mood)</h3>
-                <p>عطر عود فاخر بعبوة ذهبية أنيقة.</p>
-                <button>أضف إلى السلة</button>
+                <h3 id="product-4-name">Oud Mood</h3>
+                <p id="product-4-desc">Elegant oud in a golden bottle.</p>
+                <p class="price" id="product-4-price">$95</p>
+                <a href="#" class="btn btn-primary" id="product-4-cta" aria-label="View details for product 4">View details</a>
             </div>
         </div>
-    
-
-        <div class="product-card">
+        <!-- Product 5 -->
+        <div class="product-card" role="article" aria-labelledby="product-5-name">
+            <img src="https://via.placeholder.com/600x400?text=Product+5" alt="Product 5 placeholder image">
             <div class="info">
-                <h3>روعة المسك (Rouat Al Musk)</h3>
-                <p>عطر مسك بلمسة كلاسيكية وزينة فضية جميلة.</p>
-                <button>أضف إلى السلة</button>
+                <h3 id="product-5-name">Rouat Al Musk</h3>
+                <p id="product-5-desc">Classic musk with a refined finish.</p>
+                <p class="price" id="product-5-price">$82</p>
+                <a href="#" class="btn btn-primary" id="product-5-cta" aria-label="View details for product 5">View details</a>
             </div>
         </div>
-    
-
-        <div class="product-card">
+        <!-- Product 6 -->
+        <div class="product-card" role="article" aria-labelledby="product-6-name">
+            <img src="https://via.placeholder.com/600x400?text=Product+6" alt="Product 6 placeholder image">
             <div class="info">
-                <h3>مشارع أكوا (Mashair Aqua)</h3>
-                <p>عطر منعش بنفحات مائية وخشبية.</p>
-                <button>أضف إلى السلة</button>
+                <h3 id="product-6-name">Mashair Aqua</h3>
+                <p id="product-6-desc">Aquatic freshness with woody depth.</p>
+                <p class="price" id="product-6-price">$88</p>
+                <a href="#" class="btn btn-primary" id="product-6-cta" aria-label="View details for product 6">View details</a>
             </div>
         </div>
-    
-
-        <div class="product-card">
+        <!-- Product 7 -->
+        <div class="product-card" role="article" aria-labelledby="product-7-name">
+            <img src="https://via.placeholder.com/600x400?text=Product+7" alt="Product 7 placeholder image">
             <div class="info">
-                <h3>عجوة (Ajwaa)</h3>
-                <p>عطر شرقي بعبوة فاخرة مستوحاة من النخيل.</p>
-                <button>أضف إلى السلة</button>
+                <h3 id="product-7-name">Ajwaa</h3>
+                <p id="product-7-desc">An oriental signature inspired by palms.</p>
+                <p class="price" id="product-7-price">$99</p>
+                <a href="#" class="btn btn-primary" id="product-7-cta" aria-label="View details for product 7">View details</a>
             </div>
         </div>
-    
-
-        <div class="product-card">
-           
+        <!-- Product 8 -->
+        <div class="product-card" role="article" aria-labelledby="product-8-name">
+            <img src="https://via.placeholder.com/600x400?text=Product+8" alt="Product 8 placeholder image">
             <div class="info">
-                <h3>ثناغم (Thanaghum)</h3>
-                <p>عطر زهري رقيق مع أريج الورود.</p>
-                <button>أضف إلى السلة</button>
+                <h3 id="product-8-name">Thanaghum</h3>
+                <p id="product-8-desc">A delicate floral bouquet of roses.</p>
+                <p class="price" id="product-8-price">$84</p>
+                <a href="#" class="btn btn-primary" id="product-8-cta" aria-label="View details for product 8">View details</a>
             </div>
         </div>
-    
     </section>
     <!-- About Section -->
     <section id="about-section" class="section about">
@@ -162,6 +173,42 @@
             نفس البخور متجر متخصص في تقديم أفخم وأرقى العطور الإماراتية بتصميمات عربية مميزة. نسعى لتوفير تجربة تسوق فريدة لعشاق العطر، مع ضمان جودة عالية وخدمة ممتازة.
         </p>
     </section>
+
+    <!-- Our Story Section -->
+    <section id="story-section" class="section story" aria-labelledby="story-title">
+        <h2 id="story-title">Our Story</h2>
+        <p id="story-text">Born from a passion for fine fragrance, our story is one of craftsmanship and culture—bringing authentic aromas to modern fragrance lovers.</p>
+    </section>
+
+    <!-- Unique Features Section -->
+    <section id="features-section" class="section features" aria-labelledby="features-title">
+        <h2 id="features-title">Unique Features</h2>
+        <div class="features-grid" role="list">
+            <article class="feature-item" role="listitem" aria-labelledby="feature-1-title">
+                <h3 id="feature-1-title">Crafted Quality</h3>
+                <p id="feature-1-text">Meticulous blends using quality ingredients.</p>
+            </article>
+            <article class="feature-item" role="listitem" aria-labelledby="feature-2-title">
+                <h3 id="feature-2-title">Arabic Heritage</h3>
+                <p id="feature-2-text">Designs inspired by timeless Arabic artistry.</p>
+            </article>
+            <article class="feature-item" role="listitem" aria-labelledby="feature-3-title">
+                <h3 id="feature-3-title">Modern Elegance</h3>
+                <p id="feature-3-text">A contemporary touch for everyday luxury.</p>
+            </article>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials-section" class="section testimonials" aria-labelledby="testimonials-title">
+        <h2 id="testimonials-title">What Our Customers Say</h2>
+        <div class="quotes" role="list">
+            <blockquote role="listitem"><span id="testimonial-1">“The scents are unforgettable—rich, elegant, and long-lasting.”</span></blockquote>
+            <blockquote role="listitem"><span id="testimonial-2">“Beautiful bottles and an amazing unboxing experience.”</span></blockquote>
+            <blockquote role="listitem"><span id="testimonial-3">“Customer service was outstanding from start to finish.”</span></blockquote>
+        </div>
+    </section>
+
     <!-- Contact Section -->
     <section id="contact-section" class="section contact">
         <h2 id="contact-title">تواصل معنا</h2>

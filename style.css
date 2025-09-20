@@ -37,6 +37,8 @@
             font-family: 'Rihani', 'NotoKufiArabic', 'Noto Sans Arabic', sans-serif;
             background-color: var(--bg-color);
             color: var(--text-main);
+            line-height: 1.6;
+            font-size: 16px;
         }
         header {
             background-color: var(--nav-bg);
@@ -201,6 +203,99 @@
             width: 24px;
             height: 24px;
             fill: var(--primary-accent);
+        }
+
+        /* Buttons & Utilities */
+        .btn {
+            display: inline-block;
+            padding: 12px 18px;
+            border-radius: 4px;
+            text-decoration: none;
+            cursor: pointer;
+            font-weight: 600;
+        }
+        .btn-primary {
+            background-color: var(--button-bg);
+            color: var(--button-text);
+            border: 1px solid var(--button-bg);
+            transition: background-color .3s ease, color .3s ease, transform .1s ease;
+        }
+        .btn-primary:hover {
+            background-color: var(--button-hover-bg);
+            color: var(--button-hover-text);
+        }
+        .btn-primary:active {
+            transform: translateY(1px);
+        }
+        .hero .btn-primary {
+            margin-top: 10px;
+        }
+        .price {
+            font-weight: 700;
+            color: var(--secondary-accent);
+            margin: 0 0 10px;
+        }
+
+        /* Story */
+        .story p {
+            max-width: 900px;
+            margin: 0 auto;
+            font-size: 1.05rem;
+            color: var(--secondary-accent);
+            line-height: 1.8;
+        }
+
+        /* Features */
+        .features .features-grid {
+            display: grid;
+            gap: 24px;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        .features .feature-item {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 8px;
+            padding: 18px;
+            box-shadow: 0 1px 3px rgba(0,0,0,.06);
+        }
+        .features .feature-item h3 {
+            margin: 0 0 8px;
+            color: var(--primary-accent);
+            font-size: 1.15rem;
+        }
+        .features .feature-item p {
+            margin: 0;
+            color: var(--text-main);
+            font-size: .95rem;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            background: var(--nav-bg);
+            border-top: 1px solid var(--card-border);
+            border-bottom: 1px solid var(--card-border);
+        }
+        .testimonials .quotes {
+            max-width: 900px;
+            margin: 0 auto;
+            display: grid;
+            gap: 18px;
+        }
+        .testimonials blockquote {
+            margin: 0;
+            padding: 16px 18px;
+            background: var(--card-bg);
+            border-left: 4px solid var(--primary-accent);
+            border-radius: 4px;
+            color: var(--secondary-accent);
+            font-size: 1rem;
+        }
+
+        /* Section headings */
+        .section h2 {
+            letter-spacing: .3px;
         }
 
         /* Mobile Responsive Design */
