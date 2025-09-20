@@ -12,7 +12,7 @@
                 nav_contact: 'Contact',
                 // Hero
                 hero_title: 'Elevate Your Scent',
-                hero_description: 'Luxurious Emirati fragrances, crafted with an Arabic soul',
+                hero_description: '⚜️Your destination for distinction with luxurious Emirati perfumes, proudly Arab-made⚜️',
                 hero_cta: 'Shop the Collection',
                 // Products section heading
                 products_title: 'Our Curated Collection',
@@ -90,7 +90,7 @@
                 nav_contact: 'צור קשר',
                 // Hero
                 hero_title: 'רוממו את הניחוח שלכם',
-                hero_description: 'בשמים אמירתיים יוקרתיים, נרקחו ברוח ערבית',
+                hero_description: '⚜️הכתובת שלך למצוינות עם בשמים אמירתיים יוקרתיים, תוצרת ערבית⚜️',
                 hero_cta: 'גלו את הקולקציה',
                 // Products section heading
                 products_title: 'האוסף המובחר שלנו',
@@ -168,7 +168,7 @@
                 nav_contact: 'تواصل',
                 // Hero
                 hero_title: 'ارتقِ بعطرك',
-                hero_description: 'عطور إماراتية فاخرة بروح عربية',
+                hero_description: '⚜️عنوانك للتميز بعطور امراتية فخمة عربية الصنع⚜️',
                 hero_cta: 'اكتشفوا المجموعة',
                 // Products section heading
                 products_title: 'تشكيلة مختارة',
