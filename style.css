@@ -891,7 +891,31 @@
                 margin-left: auto; /* push nav to the right */
             }
             /* Show language switcher inside nav on desktop; hide mobile bar */
-            header nav .lang-switcher { display: inline-flex; align-items: center; gap: 8px; margin-left: 12px; }
+            header nav .lang-switcher { display: inline-flex; align-items: center; gap: 12px; margin-left: 12px; }
+            header nav .lang-switcher a {
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                padding: 8px 12px;
+                border: 1px solid #e0d6d0;
+                border-radius: 8px;
+                background: transparent;
+                color: #0b2240; /* high contrast for accessibility */
+                line-height: 1;
+                text-decoration: none;
+                transition: border-color 180ms ease, transform 180ms ease, box-shadow 180ms ease;
+            }
+            header nav .lang-switcher a:hover {
+                border-color: #d5c7bd;
+                transform: translateY(-1px);
+            }
+            header nav .lang-switcher a:focus,
+            header nav .lang-switcher a:focus-visible {
+                outline: none;
+                box-shadow:
+                    0 1px 3px rgba(0, 0, 0, 0.06),
+                    0 0 0 3px rgba(46, 125, 246, 0.18); /* visible focus ring */
+            }
             .mobile-lang-bar { display: none; }
             header nav a {
                 margin: 0;
