@@ -921,6 +921,58 @@
                 margin: 0;
                 font-size: 16px;
             }
+
+            /* Desktop fixed language group (bottom-left) */
+            header .extra-controls .lang-switcher {
+                display: inline-flex;
+                flex-direction: column;
+                gap: 12px;
+                position: fixed;
+                left: 20px;
+                bottom: 20px;
+                z-index: 1400; /* above header and content */
+                font-size: 0;  /* hide the '|' separators in the markup */
+                pointer-events: auto;
+            }
+            header .extra-controls .lang-switcher a {
+                width: 44px;
+                height: 44px;
+                border-radius: 9999px;
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                background: #ffffff;
+                color: #0b2240;
+                border: 1px solid #e0d6d0;
+                box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+                font-size: 14px; /* restore font size for anchors */
+                line-height: 1;
+                text-decoration: none;
+                transition: transform 180ms ease, box-shadow 180ms ease, background-color 180ms ease, color 180ms ease, border-color 180ms ease;
+                opacity: 0;
+                transform: translateY(8px);
+                animation: pillSlideUp 360ms ease forwards;
+            }
+            header .extra-controls .lang-switcher a:nth-child(1) { animation-delay: 60ms; }
+            header .extra-controls .lang-switcher a:nth-child(2) { animation-delay: 120ms; }
+            header .extra-controls .lang-switcher a:nth-child(3) { animation-delay: 180ms; }
+
+            header .extra-controls .lang-switcher a:hover {
+                transform: translateY(-1px);
+                box-shadow: 0 6px 16px rgba(0,0,0,0.16);
+                border-color: #d5c7bd;
+            }
+            header .extra-controls .lang-switcher a:focus,
+            header .extra-controls .lang-switcher a:focus-visible {
+                outline: none;
+                box-shadow:
+                    0 0 0 3px rgba(46,125,246,0.18),
+                    0 4px 14px rgba(0,0,0,0.14);
+            }
+
+            @keyframes pillSlideUp {
+                to { opacity: 1; transform: translateY(0); }
+            }
             /* Desktop navigation/button restyle */
             .nav a,
             .menu-button,
