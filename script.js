@@ -912,7 +912,7 @@
             });
         }
 
-        // WhatsApp: open chat with number +972525359582 and pre-filled message
+        // WhatsApp: open chat with number +972525359582 and pre-filled localized message
         function installWhatsAppClickHandler() {
             var PHONE = '972525359582';
 
@@ -933,6 +933,31 @@
                 return (document.title || '').trim();
             }
 
+            function detectLang() {
+                var htmlLang = (document.documentElement && document.documentElement.lang || '').toLowerCase();
+                var lang = htmlLang && htmlLang.length >= 2 ? htmlLang.slice(0, 2) : '';
+                if (!lang) {
+                    var nav = (navigator.language || navigator.userLanguage || '').toLowerCase();
+                    if (nav && nav.length >= 2) lang = nav.slice(0, 2);
+                }
+                // Default to English if unknown
+                return (lang || 'en');
+            }
+
+            function buildMessage(productName) {
+                var templates = {
+                    en: "Hi, I'm interested in [PRODUCT_NAME].",
+                    he: "שלום, אני מעוניין/ת ב[PRODUCT_NAME].",
+                    ar: "مرحبًا، أنا مهتم ب[PRODUCT_NAME].",
+                    es: "Hola, me interesa [PRODUCT_NAME].",
+                    fr: "Bonjour, je suis intéressé(e) par [PRODUCT_NAME].",
+                    de: "Hallo, ich bin an [PRODUCT_NAME] interessiert."
+                };
+                var lang = detectLang();
+                var tmpl = templates[lang] || templates.en;
+                return tmpl.replace('[PRODUCT_NAME]', productName || '');
+            }
+
             // Event delegation to handle all current/future .whatsapp-btn elements
             document.addEventListener('click', function (e) {
                 var btn = e.target && e.target.closest ? e.target.closest('.whatsapp-btn') : null;
@@ -943,7 +968,7 @@
                 try { if (e.stopPropagation) e.stopPropagation(); } catch (_e) {}
 
                 var productName = findProductName();
-                var msg = "Hi, I'm interested in " + productName;
+                var msg = buildMessage(productName);
                 var url = 'https://wa.me/' + PHONE + '?text=' + encodeURIComponent(msg);
 
                 try {
