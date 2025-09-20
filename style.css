@@ -65,13 +65,17 @@
             z-index: 1100; /* keep header and toggle above overlay */
         }
         header .brand {
-            flex: 1;
+            flex: 0 0 auto; /* do not let brand stretch; we'll center it absolutely */
             text-align: center;
             display: flex;
             flex-direction: column;
             align-items: center;
             gap: 1px;
             line-height: 1.15;
+            position: absolute;      /* center brand horizontally on desktop and mobile */
+            left: 50%;
+            transform: translateX(-50%);
+            pointer-events: none;    /* avoid blocking clicks on nav/toggles underneath */
         }
         .brand-line {
             display: block;
