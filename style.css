@@ -87,6 +87,34 @@
             image-rendering: -webkit-optimize-contrast; /* crisper on WebKit */
             margin-bottom: 4px;          /* subtle spacing above brand text */
         }
+        /* Header right-side logo (clickable) */
+        .header-logo {
+            position: absolute;
+            top: 50%;
+            right: 12px;                 /* physical right on mobile */
+            transform: translateY(-50%);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+        }
+        .header-logo-img {
+            display: block;
+            height: auto;
+            width: auto;
+            max-height: 48px;            /* mobile default */
+            object-fit: contain;         /* preserve aspect ratio and transparency */
+        }
+        @media (min-width: 1024px) {
+            .header-logo {
+                position: static;        /* participate in flex flow on desktop */
+                transform: none;
+                margin-left: 16px;
+                order: 4;                /* place at far right after nav/controls */
+            }
+            .header-logo-img { max-height: 60px; } /* desktop */
+        }
+
         /* Mobile menu logo container */
         .mobile-menu .menu-logo {
             display: flex;
