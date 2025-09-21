@@ -19,7 +19,7 @@
                 products_subtitle: 'We choose the best products just for you.',
                 // About
                 about_title: 'About Us',
-                about_text: 'ניחוח הקטורת — نفس البخور curates refined Emirati perfumes blended with an Arabic soul. We are dedicated to quality, service, and a beautiful shopping experience.',
+                about_text: 'Same incense curates refined Emirati perfumes blended with an Arabic soul. We are dedicated to quality, service, and a beautiful shopping experience.',
                 // Story
                 story_title: 'Our Story',
                 story_text: 'Born from a passion for fine fragrance, our story is one of craftsmanship and culture—bringing authentic aromas to modern fragrance lovers.',
@@ -106,7 +106,7 @@
                 products_subtitle: 'אנחנו בוחרים את המוצרים הטובים ביותר עבורך.',
                 // About
                 about_title: 'אודות',
-                about_text: 'ניחוח הקטורת — نفس البخور מציעה בשמים אמירתיים מעודנים עם נשמה ערבית. אנו מחויבים לאיכות, לשירות ולחוויית קנייה יפה.',
+                about_text: 'אותה קטורת מציעה בשמים אמירתיים מעודנים עם נשמה ערבית. אנו מחויבים לאיכות, לשירות ולחוויית קנייה יפה.',
                 // Story
                 story_title: 'הסיפור שלנו',
                 story_text: 'מתוך תשוקה לעולם הניחוחות, סיפורנו הוא על מלאכת מחשבת ותרבות—מביאים ארומות אותנטיות לחובבי בישום מודרניים.',
