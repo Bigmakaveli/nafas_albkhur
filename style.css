@@ -77,6 +77,39 @@
             transform: translateX(-50%);
             pointer-events: none;    /* avoid blocking clicks on nav/toggles underneath */
         }
+        /* Logo image: responsive, transparent PNG, keeps aspect ratio */
+        .brand .brand-logo {
+            display: block;
+            height: auto;
+            max-height: 48px;            /* mobile default */
+            width: auto;
+            object-fit: contain;
+            image-rendering: -webkit-optimize-contrast; /* crisper on WebKit */
+            margin-bottom: 4px;          /* subtle spacing above brand text */
+        }
+        /* Mobile menu logo container */
+        .mobile-menu .menu-logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 14px 0 0;
+        }
+        .mobile-menu .menu-logo .brand-logo {
+            max-height: 48px;
+        }
+        /* Footer logo small */
+        .footer .footer-logo {
+            max-height: 28px;
+            width: auto;
+            height: auto;
+            vertical-align: middle;
+            margin-inline-end: 8px;
+            opacity: .95;
+        }
+        @media (min-width: 1024px) {
+            .brand .brand-logo { max-height: 60px; }
+        }
+
         .brand-line {
             display: block;
             /* Force the Arabic font stack for all brand lines */
