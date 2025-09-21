@@ -91,12 +91,17 @@
         .header-logo {
             position: absolute;
             top: 50%;
-            right: 12px;                 /* physical right on mobile */
+            right: 12px;                 /* default: right side on mobile */
             transform: translateY(-50%);
             display: inline-flex;
             align-items: center;
             justify-content: center;
             text-decoration: none;
+        }
+        /* Flip to left automatically for RTL languages (Arabic/Hebrew) */
+        :root[dir="rtl"] .header-logo {
+            left: 12px;
+            right: auto;
         }
         .header-logo-img {
             display: block;
@@ -111,6 +116,12 @@
                 transform: none;
                 margin-left: 16px;
                 order: 4;                /* place at far right after nav/controls */
+            }
+            /* On RTL pages, place the side logo on the left (before nav) */
+            :root[dir="rtl"] .header-logo {
+                order: 0;
+                margin-left: 0;
+                margin-right: 16px;
             }
             .header-logo-img { max-height: 60px; } /* desktop */
         }
