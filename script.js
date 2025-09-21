@@ -1,7 +1,7 @@
     (function() {
         const translations = {
             en: {
-                brand_name: 'Nafs AlBukhoor',
+                brand_name: 'Nafas Al Bkhour',
                 // Navigation
                 nav_home: 'Home',
                 nav_products: 'Products',
@@ -88,7 +88,7 @@
                 map_title: 'Map of address'
             },
             he: {
-                brand_name: 'נפס אל־בכור',
+                brand_name: 'נפס אל בכור',
                 // Navigation
                 nav_home: 'בית',
                 nav_products: 'מוצרים',
