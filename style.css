@@ -204,7 +204,7 @@
             background-image: linear-gradient(rgba(245,240,235,0.4), rgba(245,240,235,0.4));
             background-size: cover;
             background-position: center;
-            padding: 120px 20px;
+            padding: 96px 20px;
             text-align: center;
         }
         .hero h1 {
@@ -1020,7 +1020,7 @@
             }
 
             .hero {
-                padding: 80px 20px;
+                padding: 56px 20px;
             }
 
             .hero h1 {
@@ -1077,7 +1077,7 @@
             header .brand .brand-he { font-size: 1.4rem; }
 
             .hero {
-                padding: 60px 15px;
+                padding: 36px 15px;
             }
 
             .hero h1 {
@@ -1190,7 +1190,7 @@
         /* Landscape Mobile Styles */
         @media (max-width: 768px) and (orientation: landscape) {
             .hero {
-                padding: 40px 20px;
+                padding: 16px 20px;
             }
 
             .hero h1 {
@@ -1415,7 +1415,7 @@
             /* Hero: simplified on desktop; use page background and default colors */
             .hero {
                 position: relative;
-                padding: 160px 40px;
+                padding: 136px 40px;
                 text-align: center;
                 display: block;
                 color: inherit;
