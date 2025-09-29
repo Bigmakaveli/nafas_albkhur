@@ -6,55 +6,6 @@
             font-style: normal;
         }
 
-/* Floating social buttons (bottom-right, always visible) */
-.floating-social {
-    position: fixed;
-    right: 16px;
-    bottom: calc(16px + env(safe-area-inset-bottom, 0px));
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    z-index: 1050; /* below header (1100), above content */
-}
-.floating-social .fs-btn {
-    width: 52px;
-    height: 52px;
-    border-radius: 50%;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--primary-accent);
-    background: #fff;
-    border: 1px solid var(--card-border);
-    box-shadow: 0 8px 18px rgba(0,0,0,.14);
-    transition: background-color .2s ease, transform .1s ease, box-shadow .2s ease;
-    text-decoration: none;
-}
-.floating-social .fs-btn svg {
-    width: 26px;
-    height: 26px;
-    fill: currentColor;
-}
-.floating-social .fs-btn:hover {
-    transform: translateY(-1px);
-    box-shadow: 0 10px 22px rgba(0,0,0,.16);
-}
-.floating-social .fs-btn:active {
-    transform: translateY(0);
-}
-.floating-social .fs-btn.whatsapp {
-    background: #25D366;
-    border-color: #22c15a;
-    color: #fff;
-}
-.floating-social .fs-btn.whatsapp:hover {
-    background: #1fb654;
-}
-@media (max-width: 380px) {
-    .floating-social .fs-btn { width: 48px; height: 48px; }
-    .floating-social .fs-btn svg { width: 24px; height: 24px; }
-}
-
         /* ArabicBrand for header brand (prefer WOFF2/WOFF, fallback to existing TTF); swap for better UX */
         @font-face {
             font-family: 'ArabicBrand';
